@@ -49,3 +49,6 @@ messages/*.d.json.ts
 # not content) because experimental_install doesn't recreate them.
 /.agents/skills/*
 !/.agents/skills/file-architecture
+
+# taste-skill inspector screenshots (the dealt direction.json stays versioned)
+/.taste-skill/inspect/

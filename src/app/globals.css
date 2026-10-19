@@ -1,26 +1,139 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* taste-skill seed 1912213380: rose grey, green. Type: Geist and the hero: avatar + name are brand choices over the dealt Erode and split stage */
 
 @theme inline {
+  --font-sans: var(--font-geist);
+  --font-heading: var(--font-geist);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* The five type steps of the page; the name is the only display-size text */
+@theme {
+  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-small--line-height: 1.45;
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-body--line-height: 1.5;
+  --text-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-lead--line-height: 1.3;
+  --text-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --text-head--line-height: 1.05;
+  --text-display: 17vw;
+  --text-display--line-height: 0.88;
+  --text-display--letter-spacing: -0.04em;
+  --text-display-wide: 9.25vw;
+  --text-display-wide--line-height: 0.95;
+  --text-display-wide--letter-spacing: -0.04em;
+}
+
+:root {
+  color-scheme: light;
+
+  --background: #ebe5e3;
+  --foreground: #2b2622;
+  --card: #e1dad7;
+  --card-foreground: #2b2622;
+  --popover: #f4efed;
+  --popover-foreground: #2b2622;
+  --primary: #0f7d45;
+  --primary-foreground: #ffffff;
+  --secondary: #e1dad7;
+  --secondary-foreground: #2b2622;
+  --muted: #e1dad7;
+  --muted-foreground: #6a615d;
+  --accent: #e1dad7;
+  --accent-foreground: #2b2622;
+  --destructive: #b42318;
+  --border: #d4ccc9;
+  --input: #cbc2be;
+  --ring: #0f7d45;
+  --radius: 0rem;
+
+  --t-hover: 180ms;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #161312;
+  --foreground: #ebe5e3;
+  --card: #201c1a;
+  --card-foreground: #ebe5e3;
+  --popover: #241f1d;
+  --popover-foreground: #ebe5e3;
+  --primary: #0f7d45;
+  --primary-foreground: #ffffff;
+  --secondary: #241f1d;
+  --secondary-foreground: #ebe5e3;
+  --muted: #241f1d;
+  --muted-foreground: #a69d99;
+  --accent: #2b2523;
+  --accent-foreground: #ebe5e3;
+  --destructive: #f97066;
+  --border: #2e2826;
+  --input: #3a3330;
+  --ring: #3fae74;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * No entrance animations: everything is painted on the first frame (speed
+ * first). The one move is scroll-linked, runs on the compositor and is
+ * skipped where scroll timelines or motion are unavailable.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The name gets heavier as the first screen leaves */
+    [data-wordmark] {
+      transform-origin: left bottom;
+      animation: wordmark-settle linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes wordmark-settle {
+  to {
+    scale: 0.94;
+  }
 }

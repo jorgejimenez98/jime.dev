@@ -1,18 +1,30 @@
 {
   "metadata": {
-    "title": "jime.dev",
-    "description": "Personal website of Jorge Jimenez."
+    "title": "George Jimenez · jime.dev",
+    "description": "Founder of Crealix AI, in Miami. I build tools that turn creators' ideas into video."
+  },
+  "header": {
+    "nav-label": "Profiles",
+    "action": "Visit Crealix"
   },
   "language-selector": {
     "label": "Change language (current: {language})"
   },
+  "theme-selector": {
+    "label": "Change theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
   "home": {
-    "title": "Welcome to jime.dev",
-    "description": "This site is under construction. Check back soon."
+    "name": "George Jimenez",
+    "description": "Founder of Crealix AI, in Miami. I build tools that turn creators' ideas into video.",
+    "photo-alt": "Portrait of George Jimenez"
   },
   "footer": {
-    "rights": "© {year} jime.dev. All rights reserved.",
-    "built-with": "Built with Next.js"
+    "about": "Personal site of George Jimenez",
+    "nav-label": "Elsewhere",
+    "rights": "© {year} jime.dev"
   },
   "not-found": {
     "title": "404",

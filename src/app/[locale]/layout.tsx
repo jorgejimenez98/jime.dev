@@ -1,19 +1,17 @@
 import type { Metadata } from "next"
 import { LandingFooter, LandingHeader } from "@/components/layouts"
+import { ThemeProvider } from "@/components/providers"
 import { routing } from "@/i18n"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { Geist } from "next/font/google"
 import { notFound } from "next/navigation"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations } from "next-intl/server"
 import "../globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"]
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// The page's one typeface, self-hosted by next/font at build time
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"]
 })
 
@@ -43,16 +41,21 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound()
 
   return (
+    // next-themes sets the theme class on <html> before hydration
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geist.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative flex min-h-full flex-col text-body">
         <NextIntlClientProvider>
-          <LandingHeader locale={locale} />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <LandingFooter locale={locale} />
+          <ThemeProvider>
+            <LandingHeader />
+            <main className="flex flex-1 flex-col">{children}</main>
+            <LandingFooter locale={locale} />
+          </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   )

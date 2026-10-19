@@ -46,6 +46,7 @@ src/features/<area>/<feature>/
 6. **Nested `components/`** appears only when a sub-component itself has multiple children. Example: `home/components/hero/{hero-section.tsx, components/hero-cta.tsx, components/hero-product-preview.tsx}`. Do not create `components/` for a single child file.
 7. **Folder + filename must match.** Both are `kebab-case`. The export inside is `PascalCase`. Example: folder `feature-card/`, file `feature-card.tsx`, export `FeatureCard`.
 8. **No `*.component.tsx` suffix** for feature components (that's used elsewhere in the codebase for the design-system primitives at `src/components/ui/*`, but not inside `features/`).
+   - In this repo those primitives are shadcn/ui (Base UI). `shadcn add <name>` writes a flat `src/components/ui/<name>.tsx`: move it to `src/components/ui/<name>/<name>.component.tsx`, rewrite its sibling imports (`@/components/ui/label` → `../label/label.component`) and export it from `src/components/ui/index.ts`. Everything else imports primitives from `@/components/ui`.
 9. **Do not create tests.** Never add `*.test.*`, `*.spec.*`, `__tests__/`, or similar test files unless George explicitly reverses this rule in the current request.
 10. **Centralize shared routing/layout maps.** If multiple wrappers, hooks, or components need the same route-to-module, route-to-layout, sidebar priority, or active-section mapping, create one small helper/constants file next to the owning layout or feature shell and import it everywhere. Do not duplicate route prefix arrays or matching logic across wrapper and hook files.
 

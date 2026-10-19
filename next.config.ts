@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    remotePatterns: [
+      // Profile photo, until the CMS hosts it (see `UI.PROFILE.PHOTO`)
+      {
+        protocol: "https",
+        hostname: "static.crealix.ai",
+        pathname: "/static/**"
+      }
+    ]
+  },
   turbopack: {
     rules: {
       "*.css": {
