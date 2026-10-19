@@ -42,3 +42,10 @@ next-env.d.ts
 
 # next-intl generated message types
 messages/*.d.json.ts
+
+# agent skills: downloaded ones are restored from skills-lock.json
+# (`npx skills experimental_install`); project-owned skills stay versioned.
+# `.claude/skills/*` symlinks into `.agents/skills` stay tracked (links only,
+# not content) because experimental_install doesn't recreate them.
+/.agents/skills/*
+!/.agents/skills/file-architecture
