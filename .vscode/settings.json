@@ -1,0 +1,46 @@
+{
+  // Tailwind CSS
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "css.lint.unknownAtRules": "ignore",
+  // Error Lens
+  "errorLens.codeLensEnabled": false,
+  "errorLens.enabled": true,
+  "errorLens.gutterIconsEnabled": false,
+  "errorLens.statusBarMessageEnabled": false,
+  "errorLens.messageEnabled": true,
+  "errorLens.messageTemplate": "$message",
+  "errorLens.margin": "1ch",
+  "errorLens.fontSize": "0.9em",
+  "errorLens.followCursor": "allLines",
+  // Biome Formatter
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "always"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  // Disable other formatters
+  "prettier.enable": false,
+  "eslint.format.enable": false,
+  "prisma-smart-formatter.typescript.defaultFormatter": "biomejs.biome",
+  "prisma-smart-formatter.typescriptreact.defaultFormatter": "biomejs.biome"
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded",
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "trailingCommas": "none"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "style": {
+        "noImplicitBoolean": "off",
+        "useNamingConvention": "off",
+        "useImportType": "off"
+      },
+      "suspicious": {
+        "noUnknownAtRules": "off",
+        "noDuplicateJsxProps": "error",
+        "noArrayIndexKey": "off",
+        "noConsole": {
+          "level": "on",
+          "options": {
+            "allow": ["assert", "error", "info", "warn", "debug"]
+          }
+        }
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useAltText": "error"
+      },
+      "complexity": {
+        "noUselessFragments": "error",
+        "useLiteralKeys": "off"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "error",
+        "useExhaustiveDependencies": "error"
+      }
+    },
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              "react",
+              "next",
+              ":ALIAS:",
+              "./**",
+              [":NODE:", ":PACKAGE:", ":PATH:"]
+            ],
+            "identifierOrder": "natural"
+          }
+        }
+      }
+    }
+  }
+}
