@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "title": "jime.dev",
+    "description": "Personal website of Jorge Jimenez."
+  },
+  "language-selector": {
+    "label": "Change language (current: {language})"
+  },
+  "home": {
+    "title": "Welcome to jime.dev",
+    "description": "This site is under construction. Check back soon."
+  },
+  "footer": {
+    "rights": "© {year} jime.dev. All rights reserved.",
+    "built-with": "Built with Next.js"
+  },
+  "not-found": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "text": "Sorry, the page you are looking for does not exist or has been moved.",
+    "back": "Go back home"
+  }
+}

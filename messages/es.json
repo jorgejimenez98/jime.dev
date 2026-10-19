@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "title": "jime.dev",
+    "description": "Sitio web personal de Jorge Jimenez."
+  },
+  "language-selector": {
+    "label": "Cambiar idioma (actual: {language})"
+  },
+  "home": {
+    "title": "Bienvenido a jime.dev",
+    "description": "Este sitio está en construcción. Vuelve pronto."
+  },
+  "footer": {
+    "rights": "© {year} jime.dev. Todos los derechos reservados.",
+    "built-with": "Hecho con Next.js"
+  },
+  "not-found": {
+    "title": "404",
+    "subtitle": "Página no encontrada",
+    "text": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "back": "Volver al inicio"
+  }
+}
