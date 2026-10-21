@@ -4,7 +4,7 @@ import { LanguageSelector, ThemeToggle } from "@/components/common"
 import { Link, usePathname } from "@/i18n"
 import { UI } from "@/lib/constants"
 import { cn } from "@/lib/utils"
-import { BrandMark } from "./brand-mark"
+import { BrandLogo } from "./brand-logo"
 import { useTranslations } from "next-intl"
 import { LandingContainer } from "../container/landing-container"
 
@@ -24,11 +24,9 @@ export function LandingHeader({ showBlog = true }: LandingHeaderProps) {
         <Link
           href={UI.ROUTES.HOME}
           aria-label={t("home-label")}
-          className="group flex items-center gap-2.5 text-sm font-semibold tracking-tight"
+          className="group flex items-center"
         >
-          {/* The monogram answers hover and focus; the name joins it from sm */}
-          <BrandMark initials={t("initials")} />
-          <span className="hidden sm:inline">{t("name")}</span>
+          <BrandLogo />
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2">

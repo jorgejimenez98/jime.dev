@@ -14,7 +14,6 @@ const COLORS = {
 interface SiteOgCardProps {
   name: string
   headline: string
-  initials: string
   domain: string
   location: string | null
   highlights: string[]
@@ -31,13 +30,17 @@ interface SiteOgCardProps {
 export function SiteOgCard({
   name,
   headline,
-  initials,
   domain,
   location,
   highlights,
   cta,
   avatarSrc
 }: SiteOgCardProps) {
+  // "jime.dev" → "jime" + ".dev", set like the header's wordmark
+  const dot = domain.indexOf(".")
+  const brand = dot === -1 ? domain : domain.slice(0, dot)
+  const tld = dot === -1 ? "" : domain.slice(dot)
+
   return (
     <div
       style={{
@@ -59,23 +62,36 @@ export function SiteOgCard({
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 48,
-              height: 48,
-              background: COLORS.foreground,
-              color: COLORS.background,
-              fontSize: 19,
-              fontWeight: 700,
-              letterSpacing: "0.06em"
-            }}
-          >
-            {initials}
+          {/* The site's logo: a terminal prompt in a square frame */}
+          <svg width="48" height="48" viewBox="0 0 28 28" aria-hidden="true">
+            <rect
+              x="0.75"
+              y="0.75"
+              width="26.5"
+              height="26.5"
+              fill="none"
+              stroke={COLORS.foreground}
+              strokeWidth="1.5"
+            />
+            <path
+              d="M8.5 9.5 13 14l-4.5 4.5"
+              fill="none"
+              stroke={COLORS.primary}
+              strokeWidth="2"
+              strokeLinecap="square"
+            />
+            <rect
+              x="14.5"
+              y="17.25"
+              width="5.5"
+              height="2"
+              fill={COLORS.primary}
+            />
+          </svg>
+          <div style={{ display: "flex", fontSize: 28 }}>
+            <span style={{ fontWeight: 600 }}>{brand}</span>
+            <span style={{ color: COLORS.muted }}>{tld}</span>
           </div>
-          <div style={{ fontSize: 26, fontWeight: 600 }}>{domain}</div>
         </div>
       </div>
 

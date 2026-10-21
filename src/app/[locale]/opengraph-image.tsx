@@ -35,9 +35,8 @@ export default async function OpenGraphImage({
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
 
-  const [t, tHeader, profile] = await Promise.all([
+  const [t, profile] = await Promise.all([
     getTranslations({ locale, namespace: "og" }),
-    getTranslations({ locale, namespace: "header" }),
     getProfile(locale)
   ])
   // PNG at 2x the drawn size, cropped to the face: the renderer can't read WebP
@@ -49,7 +48,6 @@ export default async function OpenGraphImage({
     <SiteOgCard
       name={profile.name}
       headline={profile.headline}
-      initials={tHeader("initials")}
       domain={new URL(SITE_URL).host}
       location={profile.location}
       highlights={[t("highlight-1"), t("highlight-2"), t("highlight-3")]}
