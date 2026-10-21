@@ -7,7 +7,9 @@ import { notFound } from "next/navigation"
 import { ImageResponse } from "next/og"
 import { hasLocale } from "next-intl"
 
-export const alt = "George Jimenez, Senior Frontend Engineer"
+// One alt for both locales, so it names him both ways
+export const alt =
+  "George Jimenez (Jorge Jimenez), Senior Full-Stack Software Engineer"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 

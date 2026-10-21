@@ -1,49 +1,41 @@
 {
   "metadata": {
-    "title": "George Jimenez · Senior Frontend Engineer",
-    "description": "Senior Frontend Engineer en SEHMA y fundador de Crealix AI, en Miami. Construyo productos web y móviles rápidos y accesibles con React, Next.js y React Native."
+    "title": "Jorge Jimenez · Senior Full-Stack Software Engineer",
+    "description": "Senior full-stack software engineer en Miami y fundador de Crealix AI. Construyo productos web, móviles y de IA de principio a fin con TypeScript, React, Next.js, Node.js y Python."
   },
   "header": {
-    "home-label": "George Jimenez, inicio",
+    "home-label": "Jorge Jimenez, inicio",
     "nav-label": "Principal",
     "blog": "Blog",
-    "websites": "Websites",
-    "about": "Sobre mí"
+    "about": "Sobre mí",
+    "name": "Jorge Jimenez",
+    "initials": "JJ",
+    "projects": "Proyectos"
   },
   "language-selector": {
     "label": "Cambiar idioma (actual: {language})"
-  },
-  "theme-selector": {
-    "label": "Cambiar tema",
-    "light": "Claro",
-    "dark": "Oscuro",
-    "system": "Sistema"
   },
   "home": {
     "cv": "Descargar CV",
     "experience-title": "Experiencia",
     "experience-link": "CV completo",
-    "websites-title": "Websites que construí",
-    "websites-link": "Todos los websites",
     "writing-title": "Escritos",
-    "writing-link": "Todos los posts"
+    "writing-link": "Todos los posts",
+    "projects-title": "Proyectos destacados",
+    "projects-link": "Todos los proyectos",
+    "skills-title": "Skills"
   },
   "experience": {
     "present": "Actual"
   },
   "about": {
     "title": "Sobre mí",
-    "description": "Experiencia, skills y trayectoria de George Jimenez, Senior Frontend Engineer en Miami.",
-    "lead": "Soy George, {alternateName} en los papeles.",
+    "description": "Experiencia, skills y trayectoria de Jorge Jimenez, senior full-stack software engineer en Miami.",
+    "lead": "En inglés me llaman George; en los papeles soy {alternateName}.",
     "experience-title": "Experiencia",
     "skills-title": "Skills",
     "background-title": "Formación e idiomas",
     "cv": "Descargar CV"
-  },
-  "websites": {
-    "title": "Websites que construí",
-    "description": "Sitios que diseñé y desarrollé para clientes y para mis propios productos.",
-    "new-tab": "se abre en una pestaña nueva"
   },
   "blog": {
     "title": "Escritos",
@@ -55,14 +47,32 @@
     "author-title": "Escrito por"
   },
   "footer": {
-    "rights": "© {year} George Jimenez",
+    "rights": "© {year} Jorge Jimenez",
     "nav-label": "En otros sitios",
-    "cv": "Descargar CV"
+    "cv": "Descargar CV",
+    "email": "Email"
   },
   "not-found": {
     "title": "404",
     "subtitle": "Página no encontrada",
     "text": "Lo sentimos, la página que buscas no existe o ha sido movida.",
     "back": "Volver al inicio"
+  },
+  "contact": {
+    "title": "Contacto",
+    "text": "El email es la forma más rápida de contactarme.",
+    "email": "Email",
+    "location": "Ubicación"
+  },
+  "theme-toggle": {
+    "label": "Cambiar modo oscuro"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Apps y sitios web que construí, de productos propios a trabajos para clientes.",
+    "new-tab": "se abre en una pestaña nueva",
+    "apps-title": "Apps",
+    "marketing-title": "Sitios web de marketing",
+    "nda": "Hay más proyectos de clientes que no puedo mostrar por confidencialidad."
   }
 }

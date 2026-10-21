@@ -3,7 +3,7 @@ import { LandingFooter, LandingHeader } from "@/components/layouts"
 import { ThemeProvider } from "@/components/providers"
 import { pickClientMessages, routing } from "@/i18n"
 import { getPostSlugs } from "@/lib/contentful"
-import { baseOpenGraph, SITE_NAME, SITE_URL } from "@/lib/helpers"
+import { baseOpenGraph, SITE_NAMES, SITE_URL } from "@/lib/helpers"
 import { Analytics } from "@vercel/analytics/next"
 import { Geist } from "next/font/google"
 import { notFound } from "next/navigation"
@@ -41,14 +41,15 @@ export async function generateMetadata({
   if (!hasLocale(routing.locales, locale)) notFound()
 
   const t = await getTranslations({ locale, namespace: "metadata" })
+  const siteName = SITE_NAMES[locale]
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: { default: t("title"), template: `%s · ${SITE_NAME}` },
+    title: { default: t("title"), template: `%s · ${siteName}` },
     description: t("description"),
-    applicationName: SITE_NAME,
-    authors: [{ name: SITE_NAME, url: SITE_URL }],
-    creator: SITE_NAME,
+    applicationName: siteName,
+    authors: [{ name: siteName, url: SITE_URL }],
+    creator: siteName,
     openGraph: { ...baseOpenGraph(locale), type: "website" },
     twitter: { card: "summary_large_image" },
     robots: {

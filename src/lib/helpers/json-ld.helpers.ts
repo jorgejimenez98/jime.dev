@@ -3,7 +3,7 @@ import { UI } from "@/lib/constants/ui.constants"
 import type { BlogPost, Experience, Profile } from "@/lib/contentful"
 import {
   localizedUrl,
-  SITE_NAME,
+  SITE_NAMES,
   SITE_URL,
   siteOpenGraphImageUrl
 } from "./seo.helpers"
@@ -53,16 +53,20 @@ export function personJsonLd(
   experiences: Experience[]
 ): JsonLdNode {
   const current = experiences.filter(experience => !experience.endDate)
+  // Every other name he goes by: the legal one and the other locale's
+  const alternateNames = [
+    ...new Set([profile.alternateName, ...Object.values(SITE_NAMES)])
+  ].filter(name => name && name !== profile.name)
 
   return {
     "@type": "Person",
     "@id": PERSON_ID,
     name: profile.name,
-    alternateName: profile.alternateName ?? undefined,
+    alternateName: alternateNames,
     url: SITE_URL,
     image: profile.avatar.url,
     description: profile.shortBio,
-    jobTitle: current[0]?.role ?? profile.headline,
+    jobTitle: profile.headline.split("·")[0].trim(),
     worksFor: current.map(experience => ({
       "@type": "Organization",
       name: experience.company,
@@ -72,18 +76,20 @@ export function personJsonLd(
     address: toAddress(profile.location),
     knowsAbout: toKnowsAbout(profile.skills),
     knowsLanguage: ["es", "en"],
-    sameAs: [profile.linkedinUrl, profile.githubUrl, profile.xUrl].filter(
-      Boolean
-    )
+    sameAs: [
+      profile.linkedinUrl,
+      ...(profile.githubUrls ?? []),
+      profile.xUrl
+    ].filter(Boolean)
   }
 }
 
-export function websiteJsonLd(): JsonLdNode {
+export function websiteJsonLd(locale: AppLocale): JsonLdNode {
   return {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     url: SITE_URL,
-    name: SITE_NAME,
+    name: SITE_NAMES[locale],
     inLanguage: ["en", "es"],
     publisher: { "@id": PERSON_ID }
   }

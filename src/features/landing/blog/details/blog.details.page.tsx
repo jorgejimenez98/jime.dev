@@ -10,7 +10,7 @@ import {
   jsonLdGraph,
   localizedUrl,
   personJsonLd,
-  SITE_NAME
+  SITE_NAMES
 } from "@/lib/helpers"
 import { AuthorCard, PostHeader } from "./components"
 import { getTranslations } from "next-intl/server"
@@ -30,7 +30,7 @@ export async function BlogPostPageContent({
     getExperiences(locale)
   ])
   const breadcrumb = breadcrumbJsonLd([
-    { name: SITE_NAME, url: localizedUrl(UI.ROUTES.HOME, locale) },
+    { name: SITE_NAMES[locale], url: localizedUrl(UI.ROUTES.HOME, locale) },
     { name: t("title"), url: localizedUrl(UI.ROUTES.BLOG, locale) },
     {
       name: post.title,

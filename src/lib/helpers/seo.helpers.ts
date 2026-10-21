@@ -7,7 +7,11 @@ import { UI } from "@/lib/constants/ui.constants"
 // canonical URLs and hreflang, shared by page metadata and the sitemap.
 
 export const SITE_URL = env.NEXT_PUBLIC_FRONTEND_URL.replace(/\/+$/, "")
-export const SITE_NAME = "George Jimenez"
+// George in English, Jorge in Spanish: the same person, named per locale
+export const SITE_NAMES = {
+  en: "George Jimenez",
+  es: "Jorge Jimenez"
+} as const satisfies Record<AppLocale, string>
 
 export const OPEN_GRAPH_LOCALES = {
   en: "en_US",
@@ -58,7 +62,7 @@ export function baseOpenGraph(
   locale: AppLocale
 ): NonNullable<Metadata["openGraph"]> {
   return {
-    siteName: SITE_NAME,
+    siteName: SITE_NAMES[locale],
     locale: OPEN_GRAPH_LOCALES[locale],
     alternateLocale: routing.locales
       .filter(other => other !== locale)

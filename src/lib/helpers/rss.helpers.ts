@@ -1,7 +1,7 @@
 import type { AppLocale } from "@/i18n/routing"
 import { UI } from "@/lib/constants/ui.constants"
 import type { BlogPostSummary } from "@/lib/contentful/contentful.types"
-import { localizedUrl, SITE_NAME } from "./seo.helpers"
+import { localizedUrl, SITE_NAMES } from "./seo.helpers"
 
 const XML_ESCAPES: Record<string, string> = {
   "&": "&amp;",
@@ -54,7 +54,7 @@ export function renderRssFeed({
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${escapeXml(`${title} · ${SITE_NAME}`)}</title>
+    <title>${escapeXml(`${title} · ${SITE_NAMES[locale]}`)}</title>
     <link>${localizedUrl(UI.ROUTES.BLOG, locale)}</link>
     <description>${escapeXml(description)}</description>
     <language>${locale}</language>${updatedAt ? `\n    <lastBuildDate>${rssDate(updatedAt)}</lastBuildDate>` : ""}

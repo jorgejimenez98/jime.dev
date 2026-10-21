@@ -21,7 +21,7 @@ export {
   localizedPath,
   localizedUrl,
   OPEN_GRAPH_LOCALES,
-  SITE_NAME,
+  SITE_NAMES,
   SITE_URL,
   siteOpenGraphImageUrl
 } from "./seo.helpers"

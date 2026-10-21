@@ -1,49 +1,41 @@
 {
   "metadata": {
-    "title": "George Jimenez · Senior Frontend Engineer",
-    "description": "Senior Frontend Engineer at SEHMA and founder of Crealix AI, based in Miami. I build fast, accessible web and mobile products with React, Next.js and React Native."
+    "title": "George Jimenez · Senior Full-Stack Software Engineer",
+    "description": "Senior full-stack software engineer in Miami and founder of Crealix AI. I build web, mobile and AI products end to end with TypeScript, React, Next.js, Node.js and Python."
   },
   "header": {
     "home-label": "George Jimenez, home",
     "nav-label": "Main",
     "blog": "Blog",
-    "websites": "Websites",
-    "about": "About"
+    "about": "About",
+    "name": "George Jimenez",
+    "initials": "GJ",
+    "projects": "Projects"
   },
   "language-selector": {
     "label": "Change language (current: {language})"
-  },
-  "theme-selector": {
-    "label": "Change theme",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
   },
   "home": {
     "cv": "Download CV",
     "experience-title": "Experience",
     "experience-link": "Full résumé",
-    "websites-title": "Websites I built",
-    "websites-link": "All websites",
     "writing-title": "Writing",
-    "writing-link": "All posts"
+    "writing-link": "All posts",
+    "projects-title": "Selected projects",
+    "projects-link": "All projects",
+    "skills-title": "Skills"
   },
   "experience": {
     "present": "Now"
   },
   "about": {
     "title": "About",
-    "description": "Experience, skills and background of George Jimenez, Senior Frontend Engineer in Miami.",
+    "description": "Experience, skills and background of George Jimenez, senior full-stack software engineer in Miami.",
     "lead": "I'm George, {alternateName} on paper.",
     "experience-title": "Experience",
     "skills-title": "Skills",
     "background-title": "Education and languages",
     "cv": "Download CV"
-  },
-  "websites": {
-    "title": "Websites I built",
-    "description": "Sites I designed and developed for clients and for my own products.",
-    "new-tab": "opens in a new tab"
   },
   "blog": {
     "title": "Writing",
@@ -57,12 +49,30 @@
   "footer": {
     "rights": "© {year} George Jimenez",
     "nav-label": "Elsewhere",
-    "cv": "Download CV"
+    "cv": "Download CV",
+    "email": "Email"
   },
   "not-found": {
     "title": "404",
     "subtitle": "Page not found",
     "text": "Sorry, the page you are looking for does not exist or has been moved.",
     "back": "Go back home"
+  },
+  "contact": {
+    "title": "Contact",
+    "text": "Email is the fastest way to reach me.",
+    "email": "Email",
+    "location": "Location"
+  },
+  "theme-toggle": {
+    "label": "Toggle dark mode"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Apps and websites I built, from my own products to client work.",
+    "new-tab": "opens in a new tab",
+    "apps-title": "Apps",
+    "marketing-title": "Marketing websites",
+    "nda": "More client projects I can't show here are covered by NDAs."
   }
 }
