@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { WebsitesPageContent } from "@/features/landing/websites/websites.page"
+import { ProjectsPageContent } from "@/features/landing/projects/projects.page"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants/ui.constants"
 import { alternatesFor } from "@/lib/helpers"
@@ -7,22 +7,22 @@ import { getTranslations } from "next-intl/server"
 
 export async function generateMetadata({
   params
-}: PageProps<"/[locale]/websites">): Promise<Metadata> {
+}: PageProps<"/[locale]/projects">): Promise<Metadata> {
   const { locale: rawLocale } = await params
   const locale = rawLocale as AppLocale
-  const t = await getTranslations({ locale, namespace: "websites" })
+  const t = await getTranslations({ locale, namespace: "projects" })
 
   return {
     title: t("title"),
     description: t("description"),
-    alternates: alternatesFor(UI.ROUTES.WEBSITES, locale)
+    alternates: alternatesFor(UI.ROUTES.PROJECTS, locale)
   }
 }
 
-export default async function WebsitesPage({
+export default async function ProjectsPage({
   params
-}: PageProps<"/[locale]/websites">) {
+}: PageProps<"/[locale]/projects">) {
   const { locale } = await params
 
-  return <WebsitesPageContent locale={locale as AppLocale} />
+  return <ProjectsPageContent locale={locale as AppLocale} />
 }

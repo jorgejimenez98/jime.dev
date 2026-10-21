@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )
     },
     { path: UI.ROUTES.ABOUT, lastModified: profile.sys.publishedAt },
-    { path: UI.ROUTES.WEBSITES, lastModified: websitesUpdatedAt },
+    { path: UI.ROUTES.PROJECTS, lastModified: websitesUpdatedAt },
     // The blog is noindex while it's empty, so it only joins with its first post
     ...(posts.length > 0
       ? [{ path: UI.ROUTES.BLOG, lastModified: postsUpdatedAt }]

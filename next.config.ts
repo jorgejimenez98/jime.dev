@@ -4,6 +4,14 @@ import createNextIntlPlugin from "next-intl/plugin"
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  // /websites became /projects once apps joined the marketing sites
+  async redirects() {
+    return [
+      { source: "/websites", destination: "/projects", permanent: true },
+      { source: "/en/websites", destination: "/projects", permanent: true },
+      { source: "/es/websites", destination: "/es/projects", permanent: true }
+    ]
+  },
   partialPrefetching: true,
   images: {
     // Contentful's Images API resizes at its CDN; non-Contentful images

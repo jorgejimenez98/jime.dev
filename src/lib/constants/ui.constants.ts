@@ -13,7 +13,7 @@ export const UI = {
   ROUTES: {
     HOME: "/",
     BLOG: "/blog",
-    WEBSITES: "/websites",
+    PROJECTS: "/projects",
     ABOUT: "/about",
     CV: "/cv.pdf",
     FEED: "/feed.xml"
@@ -21,12 +21,7 @@ export const UI = {
 
   NAV: [
     { key: "blog", href: "/blog" },
-    { key: "websites", href: "/websites" },
+    { key: "projects", href: "/projects" },
     { key: "about", href: "/about" }
-  ],
-
-  LINKS: {
-    GITHUB: "https://github.com/jorgejimenez98",
-    LINKEDIN: "https://www.linkedin.com/in/jorge-jimenez-diaz-6590b8206"
-  }
+  ]
 } as const

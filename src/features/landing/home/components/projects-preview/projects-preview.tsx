@@ -5,27 +5,27 @@ import type { Website } from "@/lib/contentful"
 import { getTranslations } from "next-intl/server"
 import { SectionHeader } from "../section-header/section-header"
 
-interface WebsitesPreviewProps {
+interface ProjectsPreviewProps {
   locale: AppLocale
   websites: Website[]
 }
 
-export async function WebsitesPreview({
+export async function ProjectsPreview({
   locale,
   websites
-}: WebsitesPreviewProps) {
-  const [t, tWebsites] = await Promise.all([
+}: ProjectsPreviewProps) {
+  const [t, tProjects] = await Promise.all([
     getTranslations({ locale, namespace: "home" }),
-    getTranslations({ locale, namespace: "websites" })
+    getTranslations({ locale, namespace: "projects" })
   ])
 
   return (
-    <section aria-labelledby="websites-title" className="mt-14">
+    <section aria-labelledby="projects-preview-title" className="mt-14">
       <SectionHeader
-        id="websites-title"
-        title={t("websites-title")}
+        id="projects-preview-title"
+        title={t("projects-title")}
         locale={locale}
-        link={{ href: UI.ROUTES.WEBSITES, label: t("websites-link") }}
+        link={{ href: UI.ROUTES.PROJECTS, label: t("projects-link") }}
       />
       <ul className="mt-2">
         {websites.map(website => (
@@ -33,7 +33,7 @@ export async function WebsitesPreview({
             key={website.sys.id}
             website={website}
             size="compact"
-            newTabLabel={tWebsites("new-tab")}
+            newTabLabel={tProjects("new-tab")}
           />
         ))}
       </ul>
