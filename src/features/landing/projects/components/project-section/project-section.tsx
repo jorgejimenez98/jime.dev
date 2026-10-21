@@ -1,5 +1,6 @@
 import { WebsiteListItem } from "@/components/content"
 import type { Website } from "@/lib/contentful"
+import { LockIcon } from "lucide-react"
 
 interface ProjectSectionProps {
   id: string
@@ -31,7 +32,15 @@ export function ProjectSection({
           />
         ))}
       </ul>
-      {note && <p className="mt-3 text-sm text-muted-foreground">{note}</p>}
+      {note && (
+        <p className="mt-4 flex items-start gap-3 rounded-lg bg-secondary px-4 py-3 text-sm text-secondary-foreground">
+          <LockIcon
+            aria-hidden="true"
+            className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+          />
+          {note}
+        </p>
+      )}
     </section>
   )
 }
