@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="CV of George Jimenez, Senior Full-Stack Software Engineer in Miami and founder of Crealix AI.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<title>George Jimenez — Senior Full-Stack Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0.55in 0.6in 0.5in; }
+  :root {
+    --ink: #111418;
+    --body: #2b3138;
+    --muted: #5d6670;
+    --rule: #dfe3e8;
+    --accent: #0e7490;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.8pt;
+    line-height: 1.48;
+    color: var(--body);
+    background: #fff;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header { padding-bottom: 12pt; border-bottom: 1.5pt solid var(--ink); }
+  h1 { font-size: 25pt; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1.05; }
+  .headline { margin-top: 4pt; font-size: 11.5pt; font-weight: 500; color: var(--accent); }
+  .contact { margin-top: 7pt; font-size: 8.8pt; color: var(--muted); }
+  .contact.links { margin-top: 2pt; }
+  .contact span + span::before { content: "·"; margin: 0 6pt; color: #b5bcc4; }
+  .contact a { color: var(--body); }
+
+  section { margin-top: 15pt; }
+  h2 {
+    font-size: 8.4pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink); padding-bottom: 4pt; margin-bottom: 8pt; border-bottom: 0.75pt solid var(--rule);
+  }
+
+  .summary { font-size: 10pt; color: var(--body); max-width: 92%; }
+  .summary strong { color: var(--ink); font-weight: 600; }
+
+  .stats { display: flex; margin-top: 10pt; border: 0.75pt solid var(--rule); border-radius: 5pt; }
+  .stat { flex: 1; padding: 7pt 10pt; }
+  .stat + .stat { border-left: 0.75pt solid var(--rule); }
+  .stat b { display: block; font-size: 13pt; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .stat small { display: block; font-size: 7.9pt; color: var(--muted); line-height: 1.3; }
+
+  .job { margin-bottom: 14pt; }
+  .row, .meta, .lede { break-after: avoid; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+  .role { font-size: 10.4pt; font-weight: 600; color: var(--ink); }
+  .role .co { color: var(--accent); }
+  .dates { font-size: 8.8pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .meta { font-size: 8.8pt; color: var(--muted); margin-top: 1pt; }
+  .lede { margin-top: 4pt; color: var(--body); }
+  .sub { margin-top: 9pt; }
+  ul { margin-top: 5pt; padding-left: 11pt; }
+  li { margin-bottom: 4pt; padding-left: 2pt; break-inside: avoid; }
+  li::marker { color: var(--accent); }
+  .job li strong { color: var(--ink); font-weight: 600; }
+  .stack { margin-top: 5pt; font-size: 8.6pt; color: var(--muted); }
+  .stack b { font-weight: 600; color: var(--body); }
+
+  .skill { display: flex; gap: 10pt; margin-bottom: 5pt; break-inside: avoid; }
+  .skill dt { flex: 0 0 112pt; font-weight: 600; color: var(--ink); }
+  .skill dd { flex: 1; }
+
+  .two { display: flex; gap: 28pt; }
+  .two > div { flex: 1; }
+  .plain p { margin-bottom: 2pt; }
+  .plain .muted { color: var(--muted); font-size: 8.8pt; }
+
+  /*
+   * Everything below is for the web view at jime.dev/cv. Print (and the PDF
+   * printed from this file) ignores it: the document above is the CV.
+   */
+  @media print {
+    .toolbar { display: none; }
+  }
+
+  @media screen {
+    html { background: #eceff2; }
+    body { background: transparent; }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 1;
+      background: rgb(236 239 242 / 0.85);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgb(17 20 24 / 0.06);
+    }
+    .toolbar-inner {
+      max-width: 8.5in; margin: 0 auto; padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      font-size: 14px;
+    }
+    .toolbar a { color: var(--body); }
+    .toolbar .back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+    .toolbar .back:hover { color: var(--ink); }
+    .toolbar .download {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 8px;
+      background: var(--accent); color: #fff; font-weight: 500;
+    }
+    .toolbar .download:hover { background: #0b5f76; }
+    .toolbar svg { width: 16px; height: 16px; flex: none; }
+    .toolbar a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .sheet {
+      max-width: 8.5in; margin: 24px auto 64px;
+      padding: 0.55in 0.6in 0.6in;
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 12px 32px rgb(16 24 40 / 0.08);
+    }
+    a:hover { color: var(--accent); }
+  }
+
+  /* The page is white like paper in both themes; only the desk around it darkens */
+  @media screen and (prefers-color-scheme: dark) {
+    html { background: #0e1115; }
+    .toolbar { background: rgb(14 17 21 / 0.85); border-bottom-color: rgb(255 255 255 / 0.06); }
+    .toolbar a, .toolbar .back { color: #c9d1d9; }
+    .toolbar .back:hover { color: #fff; }
+    .sheet { box-shadow: none; }
+  }
+
+  /* Phones: the sheet fills the screen and every row stacks */
+  @media screen and (max-width: 720px) {
+    .sheet { margin: 0; padding: 24px 20px 40px; border-radius: 0; box-shadow: none; }
+    h1 { font-size: 22pt; }
+    .contact { display: flex; flex-wrap: wrap; gap: 2pt 12pt; }
+    .contact span + span::before { display: none; }
+    .contact a { overflow-wrap: anywhere; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(odd) { border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 0.75pt solid var(--rule); }
+    .row { flex-direction: column; align-items: flex-start; gap: 1pt; }
+    .skill { flex-direction: column; gap: 0; margin-bottom: 7pt; }
+    .skill dt { flex: none; }
+    .two { flex-direction: column; gap: 0; }
+    .toolbar .label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <nav class="toolbar-inner" aria-label="CV">
+    <a class="back" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      jime.dev
+    </a>
+    <a class="download" href="/cv.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+      <span>Download<span class="label"> PDF</span></span>
+    </a>
+  </nav>
+</div>
+
+<main class="sheet">
+
+<header>
+  <h1>George Jimenez</h1>
+  <div class="headline">Senior Full-Stack Software Engineer · Founder of Crealix, an AI video SaaS</div>
+  <div class="contact">
+    <span>Miami, FL</span>
+    <span><a href="tel:+17866308292">+1 (786) 630-8292</a></span>
+    <span><a href="mailto:jjd091998@gmail.com">jjd091998@gmail.com</a></span>
+  </div>
+  <div class="contact links">
+    <span><a href="https://jime.dev">jime.dev</a></span>
+    <span><a href="https://www.linkedin.com/in/jorge-jimenez-diaz-6590b8206/">linkedin.com/in/jorge-jimenez-diaz-6590b8206</a></span>
+    <span><a href="https://github.com/jorgejimenez98">github.com/jorgejimenez98</a></span>
+  </div>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p class="summary">
+    Senior full-stack software engineer with <strong>7+ years</strong> building products end to end in TypeScript, React, Node.js and Python.
+    I founded <strong>Crealix</strong> and built it alone: an AI video SaaS with <strong>1,800+ users and 60+ paying customers</strong>.
+    I also lead front-end work at Sehma, and was previously a tech lead at Quental.
+  </p>
+  <div class="stats">
+    <div class="stat"><b>1,800+</b><small>users, built and run solo</small></div>
+    <div class="stat"><b>60+</b><small>paying customers</small></div>
+    <div class="stat"><b>99.4%</b><small>success on 800+ renders</small></div>
+    <div class="stat"><b>900+</b><small>videos auto-published</small></div>
+  </div>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="row">
+      <div class="role">Founder &amp; Lead Engineer · <a class="co" href="https://crealix.ai">Crealix</a></div>
+      <div class="dates">Oct 2025 – Present</div>
+    </div>
+    <div class="meta">Miami, FL · Remote</div>
+    <p class="lede">AI video platform: type an idea, get a finished, narrated and captioned video for TikTok, YouTube and Instagram.</p>
+    <ul>
+      <li>Grew the product from first commit to <strong>1,800+ users and 60+ paying customers</strong> as the only engineer.</li>
+      <li>Designed the video pipeline (Trigger.dev, Remotion on AWS Lambda, Cloudflare R2) with model fallbacks and cost limits across AI providers: <strong>800+ videos rendered at 99.4% success</strong>, up to 20 minutes long.</li>
+      <li>Built Stripe and PayPal subscriptions and a <strong>credits ledger</strong> (13,000+ entries) that charges real provider cost and refunds failed jobs automatically.</li>
+      <li>Shipped an <strong>MCP server with OAuth 2.1</strong> so Claude, ChatGPT and Cursor users create videos from chat; 30+ accounts connected in three weeks.</li>
+      <li>Built <strong>Autopilot</strong>, which writes, produces and publishes video series on a schedule (900+ videos posted).</li>
+      <li>Ran growth: <strong>6 languages</strong>, a multilingual SEO engine and server-side ad attribution, bringing cost per paying customer down to <strong>$11</strong>.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Next.js 16, React 19, TypeScript, Bun, Hono, PostgreSQL, Prisma, Trigger.dev, Remotion, AWS Lambda, Stripe, OpenRouter, ElevenLabs</p>
+  </div>
+
+  <div class="job">
+    <div class="row">
+      <div class="role">Senior Frontend Engineer · <a class="co" href="https://sehma.com">Sehma</a></div>
+      <div class="dates">Nov 2024 – Present</div>
+    </div>
+    <div class="meta">Miami, FL · On-site</div>
+    <ul>
+      <li>Lead front-end development of the company's <strong>web and mobile apps</strong> in React, Next.js and React Native.</li>
+      <li>Built a <strong>Storybook component library</strong> on shadcn/ui and Tailwind CSS, and shipped the web app as a PWA.</li>
+      <li>Built data-heavy screens with TanStack Query and Table, typed forms and <strong>Cypress</strong> end-to-end tests.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row">
+      <div class="role"><a class="co" href="https://quental.com/">Quental</a> · Software consultancy</div>
+      <div class="dates">Feb 2022 – Nov 2024</div>
+    </div>
+    <div class="meta">Madrid, Spain · Remote</div>
+    <div class="sub">
+      <div class="row">
+        <div class="role">Senior Frontend Engineer</div>
+        <div class="dates">Aug 2023 – Nov 2024</div>
+      </div>
+      <ul>
+        <li>Built and improved interfaces for client products, including <strong>GLS</strong> (parcel delivery) and <strong>Fesbal</strong> (Spanish Federation of Food Banks), in Vue 3, Next.js and React.</li>
+        <li>Structured state and data access with Redux Toolkit and Pinia, with validated forms and Cypress tests.</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="row">
+        <div class="role">Technical Team Leader</div>
+        <div class="dates">Feb 2022 – Aug 2023</div>
+      </div>
+      <ul>
+        <li><strong>Led an engineering team</strong> building web apps on Django REST Framework, NestJS, Next.js and Vue: scoping with stakeholders, planning and code review.</li>
+        <li>Built back-end services with Celery and Redis jobs, Solr search, Puppeteer automation and an Algorand blockchain integration, on Docker.</li>
+        <li>Set team standards for Git workflow, code review and automated testing (Pytest, Jest, end-to-end).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="row">
+      <div class="role">Software Engineer · University of Camagüey</div>
+      <div class="dates">Sep 2019 – Jan 2022</div>
+    </div>
+    <ul>
+      <li>Built web, desktop and mobile applications for the university and local companies, from analysis to delivery.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Django REST Framework, React, Angular, Node.js, Express, PyQt5, Android (Java)</p>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <dl>
+    <div class="skill"><dt>Languages</dt><dd>TypeScript, JavaScript, Python, Java</dd></div>
+    <div class="skill"><dt>Frontend</dt><dd>React, Next.js, React Native (Expo), Vue / Nuxt, Tailwind CSS, shadcn/ui, Storybook</dd></div>
+    <div class="skill"><dt>State</dt><dd>TanStack Query, Zustand, Redux Toolkit</dd></div>
+    <div class="skill"><dt>Forms &amp; validation</dt><dd>React Hook Form, TanStack Form, Formik, Conform, Zod</dd></div>
+    <div class="skill"><dt>Backend &amp; APIs</dt><dd>Node.js, Bun, Hono, NestJS, Express, Django REST, REST APIs, GraphQL</dd></div>
+    <div class="skill"><dt>Data</dt><dd>PostgreSQL, Prisma, Drizzle, Supabase, Redis, MongoDB</dd></div>
+    <div class="skill"><dt>CMS</dt><dd>Contentful, Sanity</dd></div>
+    <div class="skill"><dt>AI &amp; video</dt><dd>LLMs (OpenRouter, Claude, OpenAI, Gemini), fal.ai, MCP servers, Remotion, FFmpeg</dd></div>
+    <div class="skill"><dt>Cloud</dt><dd>AWS (Lambda, S3), Vercel, Cloudflare R2, Railway, Trigger.dev, Docker</dd></div>
+    <div class="skill"><dt>CI/CD</dt><dd>GitHub Actions, GitLab CI, SonarQube</dd></div>
+    <div class="skill"><dt>Payments &amp; auth</dt><dd>Stripe, PayPal, Better Auth, OAuth 2.1</dd></div>
+    <div class="skill"><dt>Testing &amp; monitoring</dt><dd>Jest, React Testing Library, Playwright, Cypress, Pytest, Sentry</dd></div>
+  </dl>
+</section>
+
+<section class="two">
+  <div class="plain">
+    <h2>Education</h2>
+    <p><strong>B.Eng. in Software Engineering</strong></p>
+    <p>University of Camagüey "Ignacio Agramonte Loynaz"</p>
+    <p class="muted">2017 – 2021</p>
+  </div>
+  <div class="plain">
+    <h2>Languages</h2>
+    <p><strong>Spanish</strong> — Native</p>
+    <p><strong>English</strong> — Professional working proficiency</p>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>
