@@ -1,13 +1,11 @@
+import { GithubIcon, LinkedinIcon } from "@/components/common"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants"
+import { getProfile } from "@/lib/contentful"
 import { getCurrentYear, localizedPath } from "@/lib/helpers"
+import { MailIcon } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 import { LandingContainer } from "../container/landing-container"
-
-const PROFILE_LINKS = [
-  { label: "GitHub", href: UI.LINKS.GITHUB },
-  { label: "LinkedIn", href: UI.LINKS.LINKEDIN }
-]
 
 const LINK_CLASS_NAME =
   "transition-colors duration-(--t-hover) hover:text-foreground"
@@ -18,10 +16,15 @@ interface LandingFooterProps {
 
 // One quiet line: the name, where else to find George, the feed and the CV
 export async function LandingFooter({ locale }: LandingFooterProps) {
-  const [t, year] = await Promise.all([
+  const [t, year, profile] = await Promise.all([
     getTranslations({ locale, namespace: "footer" }),
-    getCurrentYear()
+    getCurrentYear(),
+    getProfile(locale)
   ])
+  const iconLinks = [
+    { label: "GitHub", href: profile.githubUrls?.[0], icon: GithubIcon },
+    { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon }
+  ].filter((link): link is typeof link & { href: string } => !!link.href)
 
   return (
     <footer className="mt-24 border-t border-border/40">
@@ -31,19 +34,29 @@ export async function LandingFooter({ locale }: LandingFooterProps) {
 
         <nav
           aria-label={t("nav-label")}
-          className="flex flex-wrap gap-x-5 gap-y-2"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2"
         >
-          {PROFILE_LINKS.map(link => (
+          {iconLinks.map(({ label, href, icon: Icon }) => (
             <a
-              key={link.label}
-              href={link.href}
+              key={label}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={label}
               className={LINK_CLASS_NAME}
             >
-              {link.label}
+              <Icon className="size-4" />
             </a>
           ))}
+          {profile.email && (
+            <a
+              href={`mailto:${profile.email}`}
+              aria-label={t("email")}
+              className={LINK_CLASS_NAME}
+            >
+              <MailIcon aria-hidden="true" className="size-4" />
+            </a>
+          )}
           <a
             href={localizedPath(UI.ROUTES.FEED, locale)}
             className={LINK_CLASS_NAME}

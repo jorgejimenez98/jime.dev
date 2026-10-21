@@ -1,6 +1,6 @@
 "use client"
 
-import { LanguageSelector, ThemeSelector } from "@/components/common"
+import { LanguageSelector, ThemeToggle } from "@/components/common"
 import { Link, usePathname } from "@/i18n"
 import { UI } from "@/lib/constants"
 import { cn } from "@/lib/utils"
@@ -27,9 +27,9 @@ export function LandingHeader({ showBlog = true }: LandingHeaderProps) {
         >
           {/* The full name doesn't fit next to the nav on small phones */}
           <span aria-hidden="true" className="sm:hidden">
-            GJ
+            {t("initials")}
           </span>
-          <span className="hidden sm:inline">George Jimenez</span>
+          <span className="hidden sm:inline">{t("name")}</span>
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2">
@@ -57,7 +57,7 @@ export function LandingHeader({ showBlog = true }: LandingHeaderProps) {
           </nav>
 
           <LanguageSelector />
-          <ThemeSelector />
+          <ThemeToggle />
         </div>
       </LandingContainer>
     </header>

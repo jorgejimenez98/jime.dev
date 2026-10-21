@@ -5,7 +5,7 @@ import type { Messages } from "next-intl"
 const CLIENT_NAMESPACES = [
   "header",
   "language-selector",
-  "theme-selector",
+  "theme-toggle",
   "not-found"
 ] as const satisfies readonly (keyof Messages)[]
 

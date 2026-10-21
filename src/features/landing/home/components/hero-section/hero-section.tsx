@@ -1,8 +1,8 @@
+import { GithubIcon, LinkedinIcon } from "@/components/common"
 import { CvDownloadButton } from "@/components/content"
 import { Button } from "@/components/ui"
 import type { AppLocale } from "@/i18n"
 import type { Profile } from "@/lib/contentful"
-import { ArrowUpRightIcon } from "lucide-react"
 import Image from "next/image"
 import { getTranslations } from "next-intl/server"
 
@@ -14,11 +14,11 @@ interface HeroSectionProps {
 // Who George is and what he does, with the CV one click away
 export async function HeroSection({ locale, profile }: HeroSectionProps) {
   const t = await getTranslations({ locale, namespace: "home" })
+  // The personal GitHub account leads; the work ones are in the contact section
   const links = [
-    { label: "LinkedIn", href: profile.linkedinUrl },
-    { label: "GitHub", href: profile.githubUrl },
-    { label: "X", href: profile.xUrl }
-  ].filter((link): link is { label: string; href: string } => !!link.href)
+    { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon },
+    { label: "GitHub", href: profile.githubUrls?.[0], icon: GithubIcon }
+  ].filter((link): link is typeof link & { href: string } => !!link.href)
 
   return (
     <section aria-labelledby="hero-title" className="pt-14 sm:pt-20">
@@ -39,17 +39,16 @@ export async function HeroSection({ locale, profile }: HeroSectionProps) {
 
       <div className="mt-7 flex flex-wrap gap-2">
         <CvDownloadButton label={t("cv")} />
-        {links.map(link => (
+        {links.map(({ label, href, icon: Icon }) => (
           <Button
-            key={link.label}
+            key={label}
             variant="outline"
-            render={
-              <a href={link.href} target="_blank" rel="noopener noreferrer" />
-            }
+            size="icon"
+            aria-label={label}
+            render={<a href={href} target="_blank" rel="noopener noreferrer" />}
             nativeButton={false}
           >
-            {link.label}
-            <ArrowUpRightIcon data-icon="inline-end" />
+            <Icon />
           </Button>
         ))}
       </div>
