@@ -85,7 +85,12 @@ export function renderLlmsTxt({
       localizedUrl(UI.ROUTES.PROJECTS, LOCALE),
       "Apps and marketing websites I built"
     ),
-    link("CV", `${SITE_URL}${UI.ROUTES.CV}`, "Résumé as a PDF"),
+    link("CV", `${SITE_URL}${UI.ROUTES.CV}`, "Résumé, readable in the browser"),
+    link(
+      "CV (PDF)",
+      `${SITE_URL}${UI.ROUTES.CV_PDF}`,
+      "The same résumé as a PDF"
+    ),
     "",
     "## Experience",
     "",

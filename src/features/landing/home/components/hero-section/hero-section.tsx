@@ -1,5 +1,5 @@
 import { GithubIcon, LinkedinIcon, XIcon } from "@/components/common"
-import { CvDownloadButton } from "@/components/content"
+import { CvButton } from "@/components/content"
 import { Button } from "@/components/ui"
 import type { AppLocale } from "@/i18n"
 import type { Profile } from "@/lib/contentful"
@@ -44,7 +44,7 @@ export async function HeroSection({ locale, profile }: HeroSectionProps) {
       <p className="mt-6 max-w-[60ch] leading-relaxed">{profile.shortBio}</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
-        <CvDownloadButton label={t("cv")} />
+        <CvButton label={t("cv")} />
         {links.map(({ label, href, icon: Icon }) => (
           <Button
             key={label}

@@ -16,7 +16,7 @@
     "label": "Cambiar idioma (actual: {language})"
   },
   "home": {
-    "cv": "Descargar CV",
+    "cv": "Ver CV",
     "experience-title": "Experiencia",
     "experience-link": "CV completo",
     "writing-title": "Escritos",
@@ -35,7 +35,7 @@
     "experience-title": "Experiencia",
     "skills-title": "Skills",
     "background-title": "Formación e idiomas",
-    "cv": "Descargar CV"
+    "cv": "Ver CV"
   },
   "blog": {
     "title": "Escritos",
@@ -49,7 +49,7 @@
   "footer": {
     "rights": "© {year} Jorge Jimenez",
     "nav-label": "En otros sitios",
-    "cv": "Descargar CV",
+    "cv": "CV",
     "email": "Email"
   },
   "not-found": {

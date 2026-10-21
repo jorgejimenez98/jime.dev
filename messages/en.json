@@ -16,7 +16,7 @@
     "label": "Change language (current: {language})"
   },
   "home": {
-    "cv": "Download CV",
+    "cv": "View CV",
     "experience-title": "Experience",
     "experience-link": "Full résumé",
     "writing-title": "Writing",
@@ -35,7 +35,7 @@
     "experience-title": "Experience",
     "skills-title": "Skills",
     "background-title": "Education and languages",
-    "cv": "Download CV"
+    "cv": "View CV"
   },
   "blog": {
     "title": "Writing",
@@ -49,7 +49,7 @@
   "footer": {
     "rights": "© {year} George Jimenez",
     "nav-label": "Elsewhere",
-    "cv": "Download CV",
+    "cv": "CV",
     "email": "Email"
   },
   "not-found": {

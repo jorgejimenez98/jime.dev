@@ -64,7 +64,7 @@ export async function LandingFooter({ locale }: LandingFooterProps) {
           >
             RSS
           </a>
-          <a href={UI.ROUTES.CV} download className={LINK_CLASS_NAME}>
+          <a href={UI.ROUTES.CV} className={LINK_CLASS_NAME}>
             {t("cv")}
           </a>
         </nav>

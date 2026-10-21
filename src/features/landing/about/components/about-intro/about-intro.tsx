@@ -1,4 +1,4 @@
-import { CvDownloadButton, RichText } from "@/components/content"
+import { CvButton, RichText } from "@/components/content"
 import type { AppLocale } from "@/i18n"
 import type { Profile } from "@/lib/contentful"
 import { getTranslations } from "next-intl/server"
@@ -30,7 +30,7 @@ export async function AboutIntro({ locale, profile }: AboutIntroProps) {
         </div>
       )}
       <div className="mt-7">
-        <CvDownloadButton label={t("cv")} />
+        <CvButton label={t("cv")} />
       </div>
     </section>
   )

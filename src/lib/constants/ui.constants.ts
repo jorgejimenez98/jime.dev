@@ -15,7 +15,8 @@ export const UI = {
     BLOG: "/blog",
     PROJECTS: "/projects",
     ABOUT: "/about",
-    CV: "/cv.pdf",
+    CV: "/cv",
+    CV_PDF: "/cv.pdf",
     FEED: "/feed.xml"
   },
 

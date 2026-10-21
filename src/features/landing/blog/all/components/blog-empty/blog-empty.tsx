@@ -1,4 +1,4 @@
-import { CvDownloadButton } from "@/components/content"
+import { CvButton } from "@/components/content"
 
 interface BlogEmptyProps {
   title: string
@@ -15,7 +15,7 @@ export function BlogEmpty({ title, text, cvLabel }: BlogEmptyProps) {
         {text}
       </p>
       <div className="mt-5">
-        <CvDownloadButton label={cvLabel} />
+        <CvButton label={cvLabel} />
       </div>
     </div>
   )
