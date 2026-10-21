@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon } from "@/components/common"
+import { GithubIcon, LinkedinIcon, XIcon } from "@/components/common"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants"
 import { getProfile } from "@/lib/contentful"
@@ -23,7 +23,8 @@ export async function LandingFooter({ locale }: LandingFooterProps) {
   ])
   const iconLinks = [
     { label: "GitHub", href: profile.githubUrls?.[0], icon: GithubIcon },
-    { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon }
+    { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon },
+    { label: "X", href: profile.xUrl, icon: XIcon }
   ].filter((link): link is typeof link & { href: string } => !!link.href)
 
   return (

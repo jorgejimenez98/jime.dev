@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon } from "@/components/common"
+import { GithubIcon, LinkedinIcon, XIcon } from "@/components/common"
 import { CvDownloadButton } from "@/components/content"
 import { Button } from "@/components/ui"
 import type { AppLocale } from "@/i18n"
@@ -17,7 +17,8 @@ export async function HeroSection({ locale, profile }: HeroSectionProps) {
   // The personal GitHub account leads; the work ones are in the contact section
   const links = [
     { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon },
-    { label: "GitHub", href: profile.githubUrls?.[0], icon: GithubIcon }
+    { label: "GitHub", href: profile.githubUrls?.[0], icon: GithubIcon },
+    { label: "X", href: profile.xUrl, icon: XIcon }
   ].filter((link): link is typeof link & { href: string } => !!link.href)
 
   return (

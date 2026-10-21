@@ -75,6 +75,16 @@ export async function ContactSection({
             </dd>
           </div>
         )}
+        {profile.xUrl && (
+          <div className="contents">
+            <dt className="text-muted-foreground">X</dt>
+            <dd className="-mt-2.5 sm:mt-0">
+              <a href={profile.xUrl} {...external} className={LINK_CLASS_NAME}>
+                @{handleOf(profile.xUrl)}
+              </a>
+            </dd>
+          </div>
+        )}
         {profile.location && (
           <div className="contents">
             <dt className="text-muted-foreground">{t("location")}</dt>
