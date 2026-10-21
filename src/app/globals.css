@@ -177,3 +177,18 @@
     scrollbar-color: oklch(0.4 0.02 240 / 0.6) transparent;
   }
 }
+
+/*
+ * The site-wide dot grid (DotGridBackground). Pure CSS, so it paints with the
+ * HTML; the component's canvas only adds the lens around the cursor.
+ * Keep the 26px tile in sync with SPACING in dot-grid-background.tsx.
+ */
+@utility dot-grid {
+  --dot-color: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+  background-image: radial-gradient(
+    circle at center,
+    var(--dot-color) 1px,
+    transparent 1.5px
+  );
+  background-size: 26px 26px;
+}

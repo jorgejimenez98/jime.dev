@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { DotGridBackground } from "@/components/common"
 import { LandingFooter, LandingHeader } from "@/components/layouts"
 import { ThemeProvider } from "@/components/providers"
 import { pickClientMessages, routing } from "@/i18n"
@@ -89,6 +90,7 @@ export default async function LocaleLayout({
       <body className="relative flex min-h-full flex-col">
         <NextIntlClientProvider messages={pickClientMessages(messages)}>
           <ThemeProvider>
+            <DotGridBackground />
             <LandingHeader showBlog={postSlugs.length > 0} />
             <main className="flex flex-1 flex-col">{children}</main>
             <LandingFooter locale={locale} />
