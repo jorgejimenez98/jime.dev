@@ -1,4 +1,3 @@
-export * from "./avatar/avatar.component"
 export { Button, buttonVariants } from "./button/button.component"
 export * from "./dropdown-menu/dropdown-menu.component"
 export * from "./field/field.component"
