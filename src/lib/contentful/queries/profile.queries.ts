@@ -29,7 +29,7 @@ export const PROFILE_QUERY = gql`
         }
         location
         email
-        githubUrl
+        githubUrls
         linkedinUrl
         xUrl
         skills

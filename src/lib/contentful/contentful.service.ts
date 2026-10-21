@@ -77,7 +77,7 @@ export async function getExperiences(locale: AppLocale): Promise<Experience[]> {
   return present(data.experienceCollection?.items)
 }
 
-// Featured first, then newest year first
+// Apps first ("app" sorts before "marketing"), then featured, then newest
 export async function getWebsites(
   locale: AppLocale,
   { featured = false, limit = 100 }: { featured?: boolean; limit?: number } = {}

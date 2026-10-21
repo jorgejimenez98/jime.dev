@@ -11,7 +11,7 @@ export const WEBSITES_QUERY = gql`
     websiteCollection(
       limit: $limit
       where: $where
-      order: [featured_DESC, year_DESC]
+      order: [kind_ASC, featured_DESC, year_DESC]
       locale: $locale
       preview: $preview
     ) {
@@ -20,6 +20,7 @@ export const WEBSITES_QUERY = gql`
           id
           publishedAt
         }
+        kind
         name
         url
         description

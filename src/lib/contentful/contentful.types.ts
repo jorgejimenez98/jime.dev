@@ -30,7 +30,8 @@ export interface Profile {
   resume: ContentfulFile | null
   location: string | null
   email: string | null
-  githubUrl: string | null
+  // Personal account first, then the work ones
+  githubUrls: string[] | null
   linkedinUrl: string | null
   xUrl: string | null
   // One group per item: "Group: skill, skill, skill"
@@ -53,6 +54,8 @@ export interface Experience {
 
 export interface Website {
   sys: { id: string; publishedAt: string }
+  // A product or web app, or a marketing site built for a client
+  kind: "app" | "marketing"
   name: string
   url: string
   description: string
