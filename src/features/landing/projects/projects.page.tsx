@@ -1,7 +1,15 @@
-import { PageHeader } from "@/components/content"
+import { JsonLd, PageHeader } from "@/components/content"
 import { LandingContainer } from "@/components/layouts"
 import type { AppLocale } from "@/i18n"
+import { UI } from "@/lib/constants/ui.constants"
 import { getWebsites } from "@/lib/contentful"
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  localizedUrl,
+  projectsPageJsonLd,
+  SITE_NAMES
+} from "@/lib/helpers"
 import { ProjectSection } from "./components"
 import { getTranslations } from "next-intl/server"
 
@@ -19,9 +27,19 @@ export async function ProjectsPageContent({
   ])
   const apps = websites.filter(website => website.kind === "app")
   const marketing = websites.filter(website => website.kind !== "app")
+  const breadcrumb = breadcrumbJsonLd([
+    { name: SITE_NAMES[locale], url: localizedUrl(UI.ROUTES.HOME, locale) },
+    { name: t("title"), url: localizedUrl(UI.ROUTES.PROJECTS, locale) }
+  ])
 
   return (
     <LandingContainer className="pt-14 sm:pt-20">
+      <JsonLd
+        data={jsonLdGraph(
+          projectsPageJsonLd([...apps, ...marketing], locale),
+          breadcrumb
+        )}
+      />
       <PageHeader
         id="projects-title"
         title={t("title")}

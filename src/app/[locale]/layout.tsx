@@ -52,7 +52,11 @@ export async function generateMetadata({
     authors: [{ name: siteName, url: SITE_URL }],
     creator: siteName,
     openGraph: { ...baseOpenGraph(locale), type: "website" },
-    twitter: { card: "summary_large_image" },
+    twitter: {
+      card: "summary_large_image",
+      creator: "@georgejimenez98",
+      site: "@georgejimenez98"
+    },
     robots: {
       index: true,
       follow: true,

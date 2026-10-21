@@ -3,7 +3,7 @@ import { BlogPageContent } from "@/features/landing/blog/all/blog.page"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants/ui.constants"
 import { getPostSlugs } from "@/lib/contentful"
-import { alternatesFor } from "@/lib/helpers"
+import { alternatesFor, pageOpenGraph } from "@/lib/helpers"
 import { getTranslations } from "next-intl/server"
 
 export async function generateMetadata({
@@ -20,6 +20,7 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: alternatesFor(UI.ROUTES.BLOG, locale),
+    openGraph: pageOpenGraph(UI.ROUTES.BLOG, locale),
     // An empty blog is a thin page: keep it out of the index until the first post
     ...(slugs.length === 0 && { robots: { index: false, follow: true } })
   }

@@ -10,6 +10,7 @@ export {
   jsonLdGraph,
   personJsonLd,
   profilePageJsonLd,
+  projectsPageJsonLd,
   websiteJsonLd
 } from "./json-ld.helpers"
 export { renderLlmsTxt } from "./llms.helpers"
@@ -22,6 +23,7 @@ export {
   localizedPath,
   localizedUrl,
   OPEN_GRAPH_LOCALES,
+  pageOpenGraph,
   SITE_NAMES,
   SITE_URL,
   siteOpenGraphImageUrl

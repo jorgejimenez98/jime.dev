@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Jorge Jimenez · Senior Full-Stack Software Engineer",
-    "description": "Senior full-stack software engineer en Miami y fundador de Crealix AI. Construyo productos web, móviles y de IA de principio a fin con TypeScript, React, Next.js, Node.js y Python."
+    "description": "Jorge (George) Jimenez: senior full-stack software engineer en Miami y fundador de Crealix AI. Productos web, móviles y de IA, de principio a fin."
   },
   "header": {
     "home-label": "Jorge Jimenez, inicio",
@@ -76,5 +76,11 @@
     "apps-title": "Apps",
     "marketing-title": "Sitios web de marketing",
     "nda": "He construido muchas más apps que estas. La mayoría son proyectos de clientes bajo NDA, así que no puedo mostrarlas aquí."
+  },
+  "og": {
+    "cta": "Mira mi CV, proyectos y contacto",
+    "highlight-1": "7+ años creando productos",
+    "highlight-2": "1.800+ usuarios en Crealix",
+    "highlight-3": "React · Next.js · Node.js · IA"
   }
 }

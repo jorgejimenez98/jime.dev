@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { AboutPageContent } from "@/features/landing/about/about.page"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants/ui.constants"
-import { alternatesFor } from "@/lib/helpers"
+import { alternatesFor, pageOpenGraph } from "@/lib/helpers"
 import { getTranslations } from "next-intl/server"
 
 export async function generateMetadata({
@@ -15,7 +15,8 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: alternatesFor(UI.ROUTES.ABOUT, locale)
+    alternates: alternatesFor(UI.ROUTES.ABOUT, locale),
+    openGraph: pageOpenGraph(UI.ROUTES.ABOUT, locale)
   }
 }
 

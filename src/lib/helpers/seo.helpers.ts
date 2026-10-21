@@ -69,3 +69,33 @@ export function baseOpenGraph(
       .map(other => OPEN_GRAPH_LOCALES[other])
   }
 }
+
+const OPEN_GRAPH_IMAGE_ALT = {
+  en: "George Jimenez, Senior Full-Stack Software Engineer",
+  es: "Jorge Jimenez, Senior Full-Stack Software Engineer"
+} as const satisfies Record<AppLocale, string>
+
+/**
+ * A page's full Open Graph: its own og:url plus the site card. Setting it on a
+ * page replaces the layout's, so the card is named here instead of inherited;
+ * og:title and og:description still come from the page's title and description.
+ */
+export function pageOpenGraph(
+  path: string,
+  locale: AppLocale
+): NonNullable<Metadata["openGraph"]> {
+  return {
+    ...baseOpenGraph(locale),
+    type: "website",
+    url: localizedUrl(path, locale),
+    images: [
+      {
+        url: siteOpenGraphImageUrl(locale),
+        width: 1200,
+        height: 630,
+        alt: OPEN_GRAPH_IMAGE_ALT[locale],
+        type: "image/png"
+      }
+    ]
+  }
+}

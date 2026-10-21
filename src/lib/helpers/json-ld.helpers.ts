@@ -1,6 +1,6 @@
 import type { AppLocale } from "@/i18n/routing"
 import { UI } from "@/lib/constants/ui.constants"
-import type { BlogPost, Experience, Profile } from "@/lib/contentful"
+import type { BlogPost, Experience, Profile, Website } from "@/lib/contentful"
 import {
   localizedUrl,
   SITE_NAMES,
@@ -62,6 +62,8 @@ export function personJsonLd(
     "@type": "Person",
     "@id": PERSON_ID,
     name: profile.name,
+    givenName: profile.name.split(" ")[0],
+    familyName: profile.name.split(" ").slice(1).join(" "),
     alternateName: alternateNames,
     url: SITE_URL,
     image: profile.avatar.url,
@@ -90,6 +92,9 @@ export function websiteJsonLd(locale: AppLocale): JsonLdNode {
     "@id": WEBSITE_ID,
     url: SITE_URL,
     name: SITE_NAMES[locale],
+    alternateName: Object.values(SITE_NAMES).filter(
+      name => name !== SITE_NAMES[locale]
+    ),
     inLanguage: ["en", "es"],
     publisher: { "@id": PERSON_ID }
   }
@@ -106,6 +111,36 @@ export function profilePageJsonLd(
     dateModified: profile.sys.publishedAt,
     isPartOf: { "@id": WEBSITE_ID },
     mainEntity: { "@id": PERSON_ID }
+  }
+}
+
+// The projects page as a list of works George made, apps first like the page
+export function projectsPageJsonLd(
+  websites: Website[],
+  locale: AppLocale
+): JsonLdNode {
+  return {
+    "@type": "CollectionPage",
+    url: localizedUrl(UI.ROUTES.PROJECTS, locale),
+    inLanguage: locale,
+    isPartOf: { "@id": WEBSITE_ID },
+    author: { "@id": PERSON_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: websites.map((website, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "CreativeWork",
+          name: website.name,
+          url: website.url,
+          description: website.description,
+          dateCreated: String(website.year),
+          image: website.screenshot?.url,
+          creator: { "@id": PERSON_ID }
+        }
+      }))
+    }
   }
 }
 
