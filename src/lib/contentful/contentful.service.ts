@@ -1,7 +1,7 @@
 import "server-only"
 import type { AppLocale } from "@/i18n/routing"
 import { contentfulRequest, uncachedFetch } from "./client"
-import { CONTENTFUL_LOCALES } from "./contentful.constants"
+import { toContentfulLocale } from "./contentful.constants"
 import type {
   BlogPost,
   BlogPostSlug,
@@ -54,7 +54,7 @@ export async function getProfile(locale: AppLocale): Promise<Profile> {
   const preview = await isPreview()
   const data = await contentfulRequest<ProfileQueryResult>(
     PROFILE_QUERY,
-    { locale: CONTENTFUL_LOCALES[locale], preview },
+    { locale: toContentfulLocale(locale), preview },
     { preview }
   )
   const profile = data.profileCollection?.items[0]
@@ -70,7 +70,7 @@ export async function getExperiences(locale: AppLocale): Promise<Experience[]> {
   const preview = await isPreview()
   const data = await contentfulRequest<ExperiencesQueryResult>(
     EXPERIENCES_QUERY,
-    { locale: CONTENTFUL_LOCALES[locale], preview },
+    { locale: toContentfulLocale(locale), preview },
     { preview }
   )
 
@@ -89,7 +89,7 @@ export async function getWebsites(
   const data = await contentfulRequest<WebsitesQueryResult>(
     WEBSITES_QUERY,
     {
-      locale: CONTENTFUL_LOCALES[locale],
+      locale: toContentfulLocale(locale),
       preview,
       limit,
       where: featured ? { featured: true } : {}
@@ -110,7 +110,7 @@ export async function getPosts(
   const preview = await isPreview()
   const data = await contentfulRequest<BlogPostsQueryResult>(
     BLOG_POSTS_QUERY,
-    { locale: CONTENTFUL_LOCALES[locale], preview, limit },
+    { locale: toContentfulLocale(locale), preview, limit },
     { preview }
   )
 
@@ -127,7 +127,7 @@ export async function getPost(
   const preview = await isPreview()
   const data = await contentfulRequest<BlogPostQueryResult>(
     BLOG_POST_QUERY,
-    { locale: CONTENTFUL_LOCALES[locale], preview, slug },
+    { locale: toContentfulLocale(locale), preview, slug },
     { preview }
   )
 

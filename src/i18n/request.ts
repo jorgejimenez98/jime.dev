@@ -8,13 +8,10 @@ export default getRequestConfig(async ({ locale }) => {
   // An explicit `locale` (e.g. `getTranslations({ locale, namespace })`) wins.
   // Otherwise read the `[locale]` root param (Next.js 16.3+), which keeps every
   // route statically renderable without `setRequestLocale`.
-  let resolvedLocale = locale
-
-  if (!resolvedLocale) {
-    const paramValue = await rootParams.locale()
-    if (!hasLocale(routing.locales, paramValue)) notFound()
-    resolvedLocale = paramValue
-  }
+  const resolvedLocale: string = locale ?? (await rootParams.locale())
+  // A path like /wp-login.php arrives as the "locale": answer 404, don't try
+  // to import messages/wp-login.php.json (a 500)
+  if (!hasLocale(routing.locales, resolvedLocale)) notFound()
 
   return {
     locale: resolvedLocale,
