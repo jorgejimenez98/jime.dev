@@ -23,10 +23,13 @@ export function LandingHeader({ showBlog = true }: LandingHeaderProps) {
         <Link
           href={UI.ROUTES.HOME}
           aria-label={t("home-label")}
-          className="text-sm font-semibold tracking-tight"
+          className="flex items-center gap-2.5 text-sm font-semibold tracking-tight"
         >
-          {/* The full name doesn't fit next to the nav on small phones */}
-          <span aria-hidden="true" className="sm:hidden">
+          {/* A square monogram, sharp like the buttons; the name joins it from sm */}
+          <span
+            aria-hidden="true"
+            className="flex size-7 items-center justify-center bg-foreground text-[0.6875rem] font-bold tracking-wider text-background"
+          >
             {t("initials")}
           </span>
           <span className="hidden sm:inline">{t("name")}</span>
