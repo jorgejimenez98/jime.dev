@@ -23,7 +23,8 @@
     "writing-link": "Todos los posts",
     "projects-title": "Proyectos destacados",
     "projects-link": "Todos los proyectos",
-    "skills-title": "Skills"
+    "skills-title": "Skills",
+    "skills-note": "Seguro que se me olvida alguna 😅"
   },
   "experience": {
     "present": "Actual"
@@ -35,7 +36,8 @@
     "experience-title": "Experiencia",
     "skills-title": "Skills",
     "background-title": "Formación e idiomas",
-    "cv": "Ver CV"
+    "cv": "Ver CV",
+    "skills-note": "Seguro que se me olvida alguna 😅"
   },
   "blog": {
     "title": "Escritos",

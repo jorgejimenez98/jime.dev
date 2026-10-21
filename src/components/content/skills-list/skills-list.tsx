@@ -3,6 +3,8 @@ interface SkillsListProps {
   title: string
   // One group per item: "Group: skill, skill (detail, detail), skill"
   skills: string[]
+  // A closing aside under the groups
+  note?: string
   className?: string
 }
 
@@ -38,7 +40,13 @@ function toGroup(item: string) {
 }
 
 // Skills as the CV groups them, each name its own tag so the eye can scan
-export function SkillsList({ id, title, skills, className }: SkillsListProps) {
+export function SkillsList({
+  id,
+  title,
+  skills,
+  note,
+  className
+}: SkillsListProps) {
   const groups = skills.map(toGroup)
 
   return (
@@ -63,7 +71,7 @@ export function SkillsList({ id, title, skills, className }: SkillsListProps) {
                   return (
                     <li
                       key={skill}
-                      className="rounded-md bg-secondary px-2 py-0.5 text-sm text-secondary-foreground"
+                      className="bg-secondary px-2 py-0.5 text-sm text-secondary-foreground"
                     >
                       {name}
                       {detail && (
@@ -77,6 +85,7 @@ export function SkillsList({ id, title, skills, className }: SkillsListProps) {
           </div>
         ))}
       </dl>
+      {note && <p className="mt-5 text-sm text-muted-foreground">{note}</p>}
     </section>
   )
 }

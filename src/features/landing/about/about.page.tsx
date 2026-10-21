@@ -47,6 +47,7 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
           id="skills-title"
           title={t("skills-title")}
           skills={profile.skills}
+          note={t("skills-note")}
           className="mt-12"
         />
       )}
