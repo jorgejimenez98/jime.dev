@@ -9,13 +9,23 @@ export const UI = {
     ]
   },
 
-  PROFILE: {
-    // Temporary: points at the Crealix CDN until the CMS serves the photo
-    PHOTO: "https://static.crealix.ai/static/landing/founder.webp"
+  // Single source for internal paths (header, footer, sitemap, SEO helpers)
+  ROUTES: {
+    HOME: "/",
+    BLOG: "/blog",
+    WEBSITES: "/websites",
+    ABOUT: "/about",
+    CV: "/cv.pdf",
+    FEED: "/feed.xml"
   },
 
+  NAV: [
+    { key: "blog", href: "/blog" },
+    { key: "websites", href: "/websites" },
+    { key: "about", href: "/about" }
+  ],
+
   LINKS: {
-    CREALIX: "https://www.crealix.ai",
     GITHUB: "https://github.com/jorgejimenez98",
     LINKEDIN: "https://www.linkedin.com/in/jorge-jimenez-diaz-6590b8206"
   }

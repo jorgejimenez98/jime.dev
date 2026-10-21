@@ -23,8 +23,10 @@ export function LanguageSelector() {
   const [isPending, startTransition] = useTransition()
 
   const languages = UI.LOCALES.SELECTOR
+
   const currentLanguage =
     languages.find(language => language.code === locale) ?? languages[0]
+
   const CurrentFlag = LOCALE_FLAGS[currentLanguage.code]
 
   const handleLanguageChange = (nextLocale: AppLocale) => {
@@ -41,13 +43,15 @@ export function LanguageSelector() {
         render={
           <Button
             variant="ghost"
+            size="sm"
             disabled={isPending}
             aria-label={t("label", { language: currentLanguage.name })}
           />
         }
       >
         <CurrentFlag className="h-3 w-4" />
-        {currentLanguage.name}
+        {/* Flag only on small phones so the header stays one row */}
+        <span className="hidden sm:inline">{currentLanguage.name}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-fit min-w-36">
         <DropdownMenuGroup>

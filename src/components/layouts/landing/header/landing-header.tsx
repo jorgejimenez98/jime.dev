@@ -1,53 +1,65 @@
 "use client"
 
 import { LanguageSelector, ThemeSelector } from "@/components/common"
-import { Button } from "@/components/ui"
+import { Link, usePathname } from "@/i18n"
 import { UI } from "@/lib/constants"
-import { ArrowUpRightIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { useTranslations } from "next-intl"
+import { LandingContainer } from "../container/landing-container"
 
-const PROFILE_LINKS = [
-  { label: "GitHub", href: UI.LINKS.GITHUB },
-  { label: "LinkedIn", href: UI.LINKS.LINKEDIN }
-]
+interface LandingHeaderProps {
+  // Hidden while the blog has no published posts
+  showBlog?: boolean
+}
 
-export function LandingHeader() {
+export function LandingHeader({ showBlog = true }: LandingHeaderProps) {
   const t = useTranslations("header")
+  const pathname = usePathname()
+  const items = UI.NAV.filter(item => showBlog || item.href !== UI.ROUTES.BLOG)
 
   return (
-    // Desktop: floats over the hero's reading half (the portrait owns the left)
-    <header className="relative z-30 flex items-center justify-end gap-1 px-3 py-3 lg:absolute lg:inset-x-0 lg:top-0 lg:gap-2 lg:px-8 lg:py-7">
-      <nav aria-label={t("nav-label")} className="hidden items-center lg:flex">
-        {PROFILE_LINKS.map(link => (
-          <a
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-8 items-center px-2.5 text-small underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-(--t-hover) hover:decoration-current"
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+    <header className="sticky top-0 z-40 border-b border-border/30 bg-background/80 backdrop-blur-xl">
+      <LandingContainer className="flex h-16 items-center justify-between gap-3">
+        <Link
+          href={UI.ROUTES.HOME}
+          aria-label={t("home-label")}
+          className="text-sm font-semibold tracking-tight"
+        >
+          {/* The full name doesn't fit next to the nav on small phones */}
+          <span aria-hidden="true" className="sm:hidden">
+            GJ
+          </span>
+          <span className="hidden sm:inline">George Jimenez</span>
+        </Link>
 
-      <LanguageSelector />
-      <ThemeSelector />
+        <div className="flex items-center gap-1 sm:gap-2">
+          <nav aria-label={t("nav-label")} className="flex items-center">
+            {items.map(item => {
+              const isActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`)
 
-      <Button
-        render={
-          <a
-            href={UI.LINKS.CREALIX}
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-        }
-        nativeButton={false}
-        className="ml-1 lg:ml-2"
-      >
-        {t("action")}
-        <ArrowUpRightIcon data-icon="inline-end" />
-      </Button>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "relative inline-flex h-16 items-center px-2 text-sm transition-colors duration-(--t-hover) after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:rounded-full after:bg-primary after:transition-transform after:duration-(--t-hover) sm:px-2.5",
+                    isActive
+                      ? "text-foreground after:scale-x-100"
+                      : "text-muted-foreground after:scale-x-0 hover:text-foreground"
+                  )}
+                >
+                  {t(item.key)}
+                </Link>
+              )
+            })}
+          </nav>
+
+          <LanguageSelector />
+          <ThemeSelector />
+        </div>
+      </LandingContainer>
     </header>
   )
 }

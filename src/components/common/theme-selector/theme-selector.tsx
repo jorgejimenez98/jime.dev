@@ -26,7 +26,9 @@ export function ThemeSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button variant="ghost" size="icon" aria-label={t("label")} />}
+        render={
+          <Button variant="ghost" size="icon-sm" aria-label={t("label")} />
+        }
       >
         {/* The resolved theme is only known after hydration, so CSS picks the icon */}
         <SunIcon className="dark:hidden" />
