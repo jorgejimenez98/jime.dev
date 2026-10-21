@@ -1,22 +1,43 @@
 interface SkillsListProps {
   id: string
   title: string
-  // One group per item: "Group: skill, skill, skill"
+  // One group per item: "Group: skill, skill (detail, detail), skill"
   skills: string[]
   className?: string
 }
 
+// Splits on commas that aren't inside parentheses, so "AWS (Lambda, S3)" stays one skill
+function splitSkills(list: string) {
+  const skills: string[] = []
+  let depth = 0
+  let current = ""
+
+  for (const char of list) {
+    if (char === "(") depth++
+    if (char === ")") depth--
+    if (char === "," && depth === 0) {
+      skills.push(current.trim())
+      current = ""
+    } else {
+      current += char
+    }
+  }
+  skills.push(current.trim())
+
+  return skills.filter(Boolean)
+}
+
 function toGroup(item: string) {
   const separator = item.indexOf(":")
-  if (separator === -1) return { label: null, skills: item.trim() }
+  if (separator === -1) return { label: null, skills: splitSkills(item) }
 
   return {
     label: item.slice(0, separator).trim(),
-    skills: item.slice(separator + 1).trim()
+    skills: splitSkills(item.slice(separator + 1))
   }
 }
 
-// Skills grouped as the CV groups them: the label above on phones, beside from sm
+// Skills as the CV groups them, each name its own tag so the eye can scan
 export function SkillsList({ id, title, skills, className }: SkillsListProps) {
   const groups = skills.map(toGroup)
 
@@ -25,19 +46,36 @@ export function SkillsList({ id, title, skills, className }: SkillsListProps) {
       <h2 id={id} className="font-medium">
         {title}
       </h2>
-      <dl className="mt-3 grid grid-cols-1 gap-y-3 text-sm leading-relaxed sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-x-4 sm:gap-y-2">
-        {groups.map(group =>
-          group.label ? (
-            <div key={group.label} className="contents">
-              <dt className="text-muted-foreground">{group.label}</dt>
-              <dd className="-mt-2.5 sm:mt-0">{group.skills}</dd>
-            </div>
-          ) : (
-            <dd key={group.skills} className="sm:col-span-2">
-              {group.skills}
+      <dl className="mt-4 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+        {groups.map(group => (
+          <div key={group.label ?? group.skills.join()}>
+            {group.label && (
+              <dt className="text-meta text-muted-foreground">{group.label}</dt>
+            )}
+            <dd className="mt-2">
+              <ul className="flex flex-wrap gap-1.5">
+                {group.skills.map(skill => {
+                  // "AWS (Lambda, S3)": the name leads, the detail is quieter
+                  const [, name, detail] = skill.match(
+                    /^(.+?)\s*\((.+)\)$/
+                  ) ?? [null, skill, null]
+
+                  return (
+                    <li
+                      key={skill}
+                      className="rounded-md bg-secondary px-2 py-0.5 text-sm text-secondary-foreground"
+                    >
+                      {name}
+                      {detail && (
+                        <span className="text-muted-foreground"> {detail}</span>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
             </dd>
-          )
-        )}
+          </div>
+        ))}
       </dl>
     </section>
   )
