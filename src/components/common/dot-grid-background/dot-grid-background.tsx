@@ -16,10 +16,11 @@ const FADE_IN_MS = 120
 const FADE_OUT_MS = 280
 
 /**
- * The site-wide dot grid, kept to the margins beside the reading column. The
- * grid itself is CSS (.dot-grid), so it paints with the HTML; this canvas only
- * draws the lens around a mouse cursor, and only while it moves. Touch screens
- * and reduced motion get the still grid alone.
+ * The site-wide dot grid. At rest it sits in the margins beside the reading
+ * column (.dot-grid, pure CSS, painted with the HTML). This canvas draws the
+ * lens around a mouse cursor, only while it moves, everywhere but at half
+ * strength under the text (.dot-lens). Touch screens and reduced motion get
+ * the still grid alone.
  */
 export function DotGridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -196,11 +197,12 @@ export function DotGridBackground() {
   }, [])
 
   return (
-    <div
-      aria-hidden="true"
-      className="dot-grid pointer-events-none fixed inset-0 -z-10"
-    >
-      <canvas ref={canvasRef} className="size-full text-primary" />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+      <div className="dot-grid absolute inset-0" />
+      <canvas
+        ref={canvasRef}
+        className="dot-lens absolute inset-0 size-full text-primary"
+      />
     </div>
   )
 }

@@ -191,13 +191,25 @@
     transparent 1.25px
   );
   background-size: 28px 28px;
-  /* Never behind the reading column (max-w-2xl, 21rem each side of center):
-     the dots live in the margins and fade out before the text */
+  /* At rest never behind the reading column (max-w-2xl, 21rem each side of
+     center): the dots live in the margins and fade out before the text */
   mask-image: linear-gradient(
     to right,
     black calc(50% - 25rem),
     transparent calc(50% - 21rem),
     transparent calc(50% + 21rem),
+    black calc(50% + 25rem)
+  );
+}
+
+/* The cursor lens shows under the text too, at half strength, so it never
+   competes with what's being read */
+@utility dot-lens {
+  mask-image: linear-gradient(
+    to right,
+    black calc(50% - 25rem),
+    rgb(0 0 0 / 0.5) calc(50% - 21rem),
+    rgb(0 0 0 / 0.5) calc(50% + 21rem),
     black calc(50% + 25rem)
   );
 }
