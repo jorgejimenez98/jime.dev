@@ -1,0 +1,153 @@
+/*
+ * Long-form prose for Contentful Rich Text, ported from Crealix's blog
+ * (src/features/landing/blog/details/components/portable-body/portable-body.css)
+ * plus code blocks, rules and figures, which Crealix's schema doesn't allow.
+ */
+
+.rich-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+.rich-text > * + * {
+  margin-top: 1.25rem;
+}
+
+.rich-text h2,
+.rich-text h3,
+.rich-text h4 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rich-text h2 {
+  margin-top: 2.5rem;
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+
+.rich-text h3 {
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+
+.rich-text h4 {
+  margin-top: 1.75rem;
+  font-size: 1rem;
+}
+
+.rich-text p,
+.rich-text li {
+  color: var(--muted-foreground);
+}
+
+.rich-text strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.rich-text a {
+  color: var(--foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in oklch,
+    var(--foreground) 24%,
+    transparent
+  );
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--t-hover) ease;
+}
+
+.rich-text a:hover {
+  text-decoration-color: var(--foreground);
+}
+
+.rich-text ul,
+.rich-text ol {
+  padding-left: 1.5rem;
+}
+
+.rich-text ul {
+  list-style: disc;
+}
+
+.rich-text ol {
+  list-style: decimal;
+}
+
+.rich-text li + li {
+  margin-top: 0.25rem;
+}
+
+.rich-text li > p {
+  margin: 0;
+}
+
+.rich-text li::marker {
+  color: color-mix(in oklch, var(--primary) 70%, var(--muted-foreground));
+}
+
+.rich-text blockquote {
+  margin-block: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklch, var(--card) 72%, transparent);
+}
+
+.rich-text blockquote p {
+  margin: 0;
+  color: var(--foreground);
+  line-height: 1.6;
+}
+
+.rich-text code {
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  background: var(--muted);
+  color: var(--foreground);
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 0.875em;
+}
+
+.rich-text pre {
+  margin-block: 1.5rem;
+  padding: 1rem 1.125rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+.rich-text pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.rich-text hr {
+  margin-block: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.rich-text figure {
+  margin-block: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--muted);
+}
+
+.rich-text figure img {
+  width: 100%;
+  height: auto;
+}
