@@ -184,11 +184,11 @@
  * Keep the 28px tile in sync with SPACING in dot-grid-background.tsx.
  */
 @utility dot-grid {
-  --dot-color: color-mix(in oklch, var(--muted-foreground) 10%, transparent);
+  --dot-color: color-mix(in oklch, var(--muted-foreground) 14%, transparent);
   background-image: radial-gradient(
     circle at center,
-    var(--dot-color) 0.75px,
-    transparent 1.25px
+    var(--dot-color) 0.5px,
+    transparent 1px
   );
   background-size: 28px 28px;
   /* At rest never behind the reading column (max-w-2xl, 21rem each side of

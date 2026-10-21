@@ -4,10 +4,10 @@ import { useEffect, useRef } from "react"
 
 // Must match .dot-grid's background-size in globals.css, so the lens lands on its dots
 const SPACING = 28
-const DOT_RADIUS = 0.75
+const DOT_RADIUS = 0.5
 const LENS_RADIUS = 170
 // At the lens center a dot grows by this much and is drawn fully in --primary
-const GROW = 1.1
+const GROW = 0.6
 const MIN_ALPHA = 0.06
 const MAX_ALPHA = 0.6
 // Smoothing (ms): the lens trails the cursor a little, then fades out on leave
