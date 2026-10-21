@@ -12,6 +12,7 @@ export {
   profilePageJsonLd,
   websiteJsonLd
 } from "./json-ld.helpers"
+export { renderLlmsTxt } from "./llms.helpers"
 export { getReadingTime } from "./rich-text.helpers"
 export { renderRssFeed } from "./rss.helpers"
 export {
