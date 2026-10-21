@@ -8,8 +8,6 @@
     "nav-label": "Principal",
     "blog": "Blog",
     "about": "Sobre mí",
-    "name": "Jorge Jimenez",
-    "initials": "JJ",
     "projects": "Proyectos"
   },
   "language-selector": {
@@ -27,7 +25,8 @@
     "skills-note": "Seguro que se me olvida alguna 😅"
   },
   "experience": {
-    "present": "Actual"
+    "present": "Actual",
+    "new-tab": "se abre en una pestaña nueva"
   },
   "about": {
     "title": "Sobre mí",

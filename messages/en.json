@@ -8,8 +8,6 @@
     "nav-label": "Main",
     "blog": "Blog",
     "about": "About",
-    "name": "George Jimenez",
-    "initials": "GJ",
     "projects": "Projects"
   },
   "language-selector": {
@@ -27,7 +25,8 @@
     "skills-note": "I'm sure I've forgotten a few 😅"
   },
   "experience": {
-    "present": "Now"
+    "present": "Now",
+    "new-tab": "opens in a new tab"
   },
   "about": {
     "title": "About",

@@ -20,6 +20,7 @@ export const EXPERIENCES_QUERY = gql`
         endDate
         summary
         stack
+        highlights
       }
     }
   }

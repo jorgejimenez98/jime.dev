@@ -1,3 +1,4 @@
+import { ExperienceHighlights } from "@/components/content"
 import type { AppLocale } from "@/i18n"
 import type { Experience } from "@/lib/contentful"
 import { formatMonthYear } from "@/lib/helpers"
@@ -49,6 +50,12 @@ export function ExperienceItem({
         <p className="mt-1.5 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">
           {experience.summary}
         </p>
+      )}
+      {experience.highlights && experience.highlights.length > 0 && (
+        <ExperienceHighlights
+          highlights={experience.highlights}
+          className="mt-3"
+        />
       )}
       {experience.stack && experience.stack.length > 0 && (
         <p className="mt-1.5 text-meta text-muted-foreground">

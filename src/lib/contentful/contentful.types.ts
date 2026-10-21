@@ -50,6 +50,8 @@ export interface Experience {
   endDate: string | null
   summary: string | null
   stack: string[] | null
+  // Short facts; the ones that start with a figure read as stats
+  highlights: string[] | null
 }
 
 export interface Website {
