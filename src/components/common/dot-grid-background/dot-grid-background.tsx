@@ -3,22 +3,23 @@
 import { useEffect, useRef } from "react"
 
 // Must match .dot-grid's background-size in globals.css, so the lens lands on its dots
-const SPACING = 26
-const DOT_RADIUS = 1
-const LENS_RADIUS = 150
+const SPACING = 28
+const DOT_RADIUS = 0.75
+const LENS_RADIUS = 170
 // At the lens center a dot grows by this much and is drawn fully in --primary
-const GROW = 1.6
-const MIN_ALPHA = 0.12
-const MAX_ALPHA = 0.9
+const GROW = 1.1
+const MIN_ALPHA = 0.06
+const MAX_ALPHA = 0.6
 // Smoothing (ms): the lens trails the cursor a little, then fades out on leave
 const FOLLOW_MS = 60
 const FADE_IN_MS = 120
 const FADE_OUT_MS = 280
 
 /**
- * The site-wide dot grid. The grid itself is CSS (.dot-grid), so it paints with
- * the HTML; this canvas only draws the lens around a mouse cursor, and only
- * while it moves. Touch screens and reduced motion get the still grid alone.
+ * The site-wide dot grid, kept to the margins beside the reading column. The
+ * grid itself is CSS (.dot-grid), so it paints with the HTML; this canvas only
+ * draws the lens around a mouse cursor, and only while it moves. Touch screens
+ * and reduced motion get the still grid alone.
  */
 export function DotGridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

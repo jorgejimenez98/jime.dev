@@ -181,14 +181,23 @@
 /*
  * The site-wide dot grid (DotGridBackground). Pure CSS, so it paints with the
  * HTML; the component's canvas only adds the lens around the cursor.
- * Keep the 26px tile in sync with SPACING in dot-grid-background.tsx.
+ * Keep the 28px tile in sync with SPACING in dot-grid-background.tsx.
  */
 @utility dot-grid {
-  --dot-color: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+  --dot-color: color-mix(in oklch, var(--muted-foreground) 10%, transparent);
   background-image: radial-gradient(
     circle at center,
-    var(--dot-color) 1px,
-    transparent 1.5px
+    var(--dot-color) 0.75px,
+    transparent 1.25px
   );
-  background-size: 26px 26px;
+  background-size: 28px 28px;
+  /* Never behind the reading column (max-w-2xl, 21rem each side of center):
+     the dots live in the margins and fade out before the text */
+  mask-image: linear-gradient(
+    to right,
+    black calc(50% - 25rem),
+    transparent calc(50% - 21rem),
+    transparent calc(50% + 21rem),
+    black calc(50% + 25rem)
+  );
 }
