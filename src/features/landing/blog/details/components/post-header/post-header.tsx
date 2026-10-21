@@ -49,7 +49,7 @@ export function PostHeader({
           height={post.coverImage.height}
           sizes="(min-width: 672px) 624px, 100vw"
           loading="eager"
-          className="mt-8 aspect-video w-full rounded-xl border border-border/60 bg-muted object-cover"
+          className="mt-8 aspect-video w-full border border-border/60 bg-muted object-cover"
         />
       )}
     </header>

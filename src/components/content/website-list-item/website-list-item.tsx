@@ -38,7 +38,7 @@ export function WebsiteListItem({
       >
         <div
           className={cn(
-            "relative aspect-16/10 shrink-0 overflow-hidden rounded-lg border border-border/60 bg-muted",
+            "relative aspect-16/10 shrink-0 overflow-hidden border border-border/60 bg-muted",
             isCompact ? "w-24" : "w-full sm:w-42"
           )}
         >
