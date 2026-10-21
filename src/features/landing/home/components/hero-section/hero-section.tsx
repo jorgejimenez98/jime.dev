@@ -1,54 +1,58 @@
-"use client"
+import { CvDownloadButton } from "@/components/content"
+import { Button } from "@/components/ui"
+import type { AppLocale } from "@/i18n"
+import type { Profile } from "@/lib/contentful"
+import { ArrowUpRightIcon } from "lucide-react"
+import Image from "next/image"
+import { getTranslations } from "next-intl/server"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui"
-import { UI } from "@/lib/constants"
-import { getImageProps } from "next/image"
-import { useTranslations } from "next-intl"
+interface HeroSectionProps {
+  locale: AppLocale
+  profile: Profile
+}
 
-const AVATAR_SIZE = 96
-
-export function HeroSection() {
-  const t = useTranslations("home")
-  const name = t("name")
-  const words = name.split(" ")
-  const initials = words.map(word => word[0]).join("")
-
-  // next/image's optimized src/srcSet, rendered by the Avatar primitive
-  const { props: avatarImage } = getImageProps({
-    src: UI.PROFILE.PHOTO,
-    alt: t("photo-alt"),
-    width: AVATAR_SIZE,
-    height: AVATAR_SIZE,
-    loading: "eager"
-  })
+// Who George is and what he does, with the CV one click away
+export async function HeroSection({ locale, profile }: HeroSectionProps) {
+  const t = await getTranslations({ locale, namespace: "home" })
+  const links = [
+    { label: "LinkedIn", href: profile.linkedinUrl },
+    { label: "GitHub", href: profile.githubUrl },
+    { label: "X", href: profile.xUrl }
+  ].filter((link): link is { label: string; href: string } => !!link.href)
 
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="flex min-h-[calc(100svh-3.5rem)] flex-col justify-center gap-8 px-5 py-12 lg:min-h-svh lg:px-8 lg:py-32"
-    >
-      <Avatar className="size-20 lg:size-24">
-        {/* keepMounted: the <img> ships in the server HTML instead of after hydration */}
-        <AvatarImage {...avatarImage} keepMounted />
-        {/* Only shows if the photo fails; the delay keeps it out of the first paint */}
-        <AvatarFallback delay={600}>{initials}</AvatarFallback>
-      </Avatar>
+    <section aria-labelledby="hero-title" className="pt-14 sm:pt-20">
+      <Image
+        src={profile.avatar.url}
+        alt={profile.avatar.description ?? profile.name}
+        width={72}
+        height={72}
+        loading="eager"
+        className="size-18 rounded-full bg-muted object-cover"
+      />
 
-      <h1
-        id="hero-title"
-        data-wordmark
-        className="font-normal lowercase text-display md:text-display-wide md:whitespace-nowrap"
-      >
-        {words.map((word, index) => (
-          <span key={word}>
-            {/* One word per line on phones, one line from tablet up */}
-            <span className="block md:inline">{word}</span>
-            {index < words.length - 1 && " "}
-          </span>
-        ))}
+      <h1 id="hero-title" className="mt-6 text-display font-semibold">
+        {profile.name}
       </h1>
+      <p className="mt-2.5 text-muted-foreground">{profile.headline}</p>
+      <p className="mt-5 max-w-[56ch] leading-relaxed">{profile.shortBio}</p>
 
-      <p className="max-w-[30ch] text-lead">{t("description")}</p>
+      <div className="mt-7 flex flex-wrap gap-2">
+        <CvDownloadButton label={t("cv")} />
+        {links.map(link => (
+          <Button
+            key={link.label}
+            variant="outline"
+            render={
+              <a href={link.href} target="_blank" rel="noopener noreferrer" />
+            }
+            nativeButton={false}
+          >
+            {link.label}
+            <ArrowUpRightIcon data-icon="inline-end" />
+          </Button>
+        ))}
+      </div>
     </section>
   )
 }
