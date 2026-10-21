@@ -21,6 +21,7 @@
     "writing-link": "Todos los posts",
     "projects-title": "Proyectos destacados",
     "projects-link": "Todos los proyectos",
+    "projects-marketing-link": "Ver los {count, number} sitios de marketing",
     "skills-title": "Skills",
     "skills-note": "Seguro que se me olvida alguna 😅"
   },

@@ -27,6 +27,7 @@ export const WEBSITES_QUERY = gql`
         year
         client
         featured
+        homepage
         screenshot {
           url
           width

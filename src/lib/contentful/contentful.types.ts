@@ -64,6 +64,8 @@ export interface Website {
   year: number
   client: string | null
   featured: boolean | null
+  // Picked for the home preview ("Show on home" in Contentful)
+  homepage: boolean | null
   screenshot: ContentfulImage | null
 }
 

@@ -21,12 +21,12 @@ interface HomePageContentProps {
 }
 
 export async function HomePageContent({ locale }: HomePageContentProps) {
-  // Apps sort before marketing sites, so Crealix and the other apps lead
+  // Every site: the preview shows the home picks and counts the rest
   const [t, profile, experiences, websites, posts] = await Promise.all([
     getTranslations({ locale, namespace: "home" }),
     getProfile(locale),
     getExperiences(locale),
-    getWebsites(locale, { limit: 4 }),
+    getWebsites(locale),
     getPosts(locale, { limit: 3 })
   ])
 
