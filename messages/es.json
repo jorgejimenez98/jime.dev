@@ -1,11 +1,14 @@
 {
   "metadata": {
-    "title": "Jorge Jimenez · jime.dev",
-    "description": "Fundador de Crealix AI, en Miami. Creo herramientas para convertir ideas en video."
+    "title": "George Jimenez · Senior Frontend Engineer",
+    "description": "Senior Frontend Engineer en SEHMA y fundador de Crealix AI, en Miami. Construyo productos web y móviles rápidos y accesibles con React, Next.js y React Native."
   },
   "header": {
-    "nav-label": "Perfiles",
-    "action": "Visitar Crealix"
+    "home-label": "George Jimenez, inicio",
+    "nav-label": "Principal",
+    "blog": "Blog",
+    "websites": "Websites",
+    "about": "Sobre mí"
   },
   "language-selector": {
     "label": "Cambiar idioma (actual: {language})"
@@ -17,14 +20,44 @@
     "system": "Sistema"
   },
   "home": {
-    "name": "Jorge Jimenez",
-    "description": "Fundador de Crealix AI, en Miami. Creo herramientas para convertir ideas en video.",
-    "photo-alt": "Retrato de Jorge Jimenez"
+    "cv": "Descargar CV",
+    "experience-title": "Experiencia",
+    "experience-link": "CV completo",
+    "websites-title": "Websites que construí",
+    "websites-link": "Todos los websites",
+    "writing-title": "Escritos",
+    "writing-link": "Todos los posts"
+  },
+  "experience": {
+    "present": "Actual"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Experiencia, skills y trayectoria de George Jimenez, Senior Frontend Engineer en Miami.",
+    "lead": "Soy George, {alternateName} en los papeles.",
+    "experience-title": "Experiencia",
+    "skills-title": "Skills",
+    "background-title": "Formación e idiomas",
+    "cv": "Descargar CV"
+  },
+  "websites": {
+    "title": "Websites que construí",
+    "description": "Sitios que diseñé y desarrollé para clientes y para mis propios productos.",
+    "new-tab": "se abre en una pestaña nueva"
+  },
+  "blog": {
+    "title": "Escritos",
+    "description": "Notas sobre construir productos web rápidos y accesibles.",
+    "empty-title": "El primer post está en camino",
+    "empty-text": "Escribiré sobre arquitectura frontend, rendimiento y liderar equipos. Mientras tanto, mi CV tiene los detalles.",
+    "back": "Todos los posts",
+    "reading-time": "{minutes, number} min de lectura",
+    "author-title": "Escrito por"
   },
   "footer": {
-    "about": "Sitio personal de Jorge Jimenez",
+    "rights": "© {year} George Jimenez",
     "nav-label": "En otros sitios",
-    "rights": "© {year} jime.dev"
+    "cv": "Descargar CV"
   },
   "not-found": {
     "title": "404",

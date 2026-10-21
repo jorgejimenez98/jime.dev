@@ -1,11 +1,14 @@
 {
   "metadata": {
-    "title": "George Jimenez · jime.dev",
-    "description": "Founder of Crealix AI, in Miami. I build tools that turn creators' ideas into video."
+    "title": "George Jimenez · Senior Frontend Engineer",
+    "description": "Senior Frontend Engineer at SEHMA and founder of Crealix AI, based in Miami. I build fast, accessible web and mobile products with React, Next.js and React Native."
   },
   "header": {
-    "nav-label": "Profiles",
-    "action": "Visit Crealix"
+    "home-label": "George Jimenez, home",
+    "nav-label": "Main",
+    "blog": "Blog",
+    "websites": "Websites",
+    "about": "About"
   },
   "language-selector": {
     "label": "Change language (current: {language})"
@@ -17,14 +20,44 @@
     "system": "System"
   },
   "home": {
-    "name": "George Jimenez",
-    "description": "Founder of Crealix AI, in Miami. I build tools that turn creators' ideas into video.",
-    "photo-alt": "Portrait of George Jimenez"
+    "cv": "Download CV",
+    "experience-title": "Experience",
+    "experience-link": "Full résumé",
+    "websites-title": "Websites I built",
+    "websites-link": "All websites",
+    "writing-title": "Writing",
+    "writing-link": "All posts"
+  },
+  "experience": {
+    "present": "Now"
+  },
+  "about": {
+    "title": "About",
+    "description": "Experience, skills and background of George Jimenez, Senior Frontend Engineer in Miami.",
+    "lead": "I'm George, {alternateName} on paper.",
+    "experience-title": "Experience",
+    "skills-title": "Skills",
+    "background-title": "Education and languages",
+    "cv": "Download CV"
+  },
+  "websites": {
+    "title": "Websites I built",
+    "description": "Sites I designed and developed for clients and for my own products.",
+    "new-tab": "opens in a new tab"
+  },
+  "blog": {
+    "title": "Writing",
+    "description": "Notes on building fast, accessible products for the web.",
+    "empty-title": "The first post is on its way",
+    "empty-text": "I'm writing about frontend architecture, performance and leading teams. Until then, my CV has the details.",
+    "back": "All posts",
+    "reading-time": "{minutes, number} min read",
+    "author-title": "Written by"
   },
   "footer": {
-    "about": "Personal site of George Jimenez",
+    "rights": "© {year} George Jimenez",
     "nav-label": "Elsewhere",
-    "rights": "© {year} jime.dev"
+    "cv": "Download CV"
   },
   "not-found": {
     "title": "404",
