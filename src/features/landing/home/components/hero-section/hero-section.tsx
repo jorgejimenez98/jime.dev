@@ -21,23 +21,28 @@ export async function HeroSection({ locale, profile }: HeroSectionProps) {
   ].filter((link): link is typeof link & { href: string } => !!link.href)
 
   return (
-    <section aria-labelledby="hero-title" className="pt-14 sm:pt-20">
-      <Image
-        src={profile.avatar.url}
-        alt={profile.avatar.description ?? profile.name}
-        width={72}
-        height={72}
-        loading="eager"
-        className="size-18 rounded-full bg-muted object-cover"
-      />
+    <section aria-labelledby="hero-title" className="pt-10 sm:pt-14">
+      {/* Name and role share a row with the portrait, on phones too */}
+      <div className="flex items-center justify-between gap-5 sm:gap-8">
+        <div className="min-w-0">
+          <h1 id="hero-title" className="text-display font-semibold">
+            {profile.name}
+          </h1>
+          <p className="mt-2 text-muted-foreground">{profile.headline}</p>
+        </div>
+        <Image
+          src={profile.avatar.url}
+          alt={profile.avatar.description ?? profile.name}
+          width={112}
+          height={112}
+          sizes="(min-width: 640px) 112px, 64px"
+          loading="eager"
+          className="size-16 shrink-0 rounded-full bg-muted object-cover sm:size-28"
+        />
+      </div>
+      <p className="mt-6 max-w-[60ch] leading-relaxed">{profile.shortBio}</p>
 
-      <h1 id="hero-title" className="mt-6 text-display font-semibold">
-        {profile.name}
-      </h1>
-      <p className="mt-2.5 text-muted-foreground">{profile.headline}</p>
-      <p className="mt-5 max-w-[56ch] leading-relaxed">{profile.shortBio}</p>
-
-      <div className="mt-7 flex flex-wrap gap-2">
+      <div className="mt-6 flex flex-wrap gap-2">
         <CvDownloadButton label={t("cv")} />
         {links.map(({ label, href, icon: Icon }) => (
           <Button
