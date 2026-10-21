@@ -6,6 +6,7 @@ const CLIENT_NAMESPACES = [
   "header",
   "language-selector",
   "theme-toggle",
+  "scroll-to-top",
   "not-found"
 ] as const satisfies readonly (keyof Messages)[]
 

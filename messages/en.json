@@ -69,6 +69,9 @@
   "theme-toggle": {
     "label": "Toggle dark mode"
   },
+  "scroll-to-top": {
+    "label": "Back to top"
+  },
   "projects": {
     "title": "Projects",
     "description": "Apps and websites I built, from my own products to client work.",
