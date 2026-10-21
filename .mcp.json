@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "contentful": {
+      "command": "sh",
+      "args": [
+        "-c",
+        "set -a; . ./.env; set +a; CONTENTFUL_MANAGEMENT_ACCESS_TOKEN=\"$CONTENTFUL_CMA_TOKEN\" SPACE_ID=\"$NEXT_PUBLIC_CONTENTFUL_SPACE_ID\" ENVIRONMENT_ID=\"${CONTENTFUL_ENVIRONMENT:-master}\" exec npx -y @contentful/mcp-server"
+      ]
+    }
+  }
+}
