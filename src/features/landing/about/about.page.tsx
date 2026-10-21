@@ -1,4 +1,4 @@
-import { JsonLd } from "@/components/content"
+import { ContactSection, JsonLd, SkillsList } from "@/components/content"
 import { LandingContainer } from "@/components/layouts"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants/ui.constants"
@@ -9,14 +9,9 @@ import {
   localizedUrl,
   personJsonLd,
   profilePageJsonLd,
-  SITE_NAME
+  SITE_NAMES
 } from "@/lib/helpers"
-import {
-  AboutIntro,
-  BackgroundSection,
-  ExperienceList,
-  SkillsList
-} from "./components"
+import { AboutIntro, BackgroundSection, ExperienceList } from "./components"
 import { getTranslations } from "next-intl/server"
 
 interface AboutPageContentProps {
@@ -30,7 +25,7 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
     getExperiences(locale)
   ])
   const breadcrumb = breadcrumbJsonLd([
-    { name: SITE_NAME, url: localizedUrl(UI.ROUTES.HOME, locale) },
+    { name: SITE_NAMES[locale], url: localizedUrl(UI.ROUTES.HOME, locale) },
     { name: t("title"), url: localizedUrl(UI.ROUTES.ABOUT, locale) }
   ])
 
@@ -48,7 +43,12 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
         <ExperienceList locale={locale} experiences={experiences} />
       )}
       {profile.skills && profile.skills.length > 0 && (
-        <SkillsList locale={locale} skills={profile.skills} />
+        <SkillsList
+          id="skills-title"
+          title={t("skills-title")}
+          skills={profile.skills}
+          className="mt-12"
+        />
       )}
       {(profile.education || profile.languages) && (
         <BackgroundSection
@@ -57,6 +57,7 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
           languages={profile.languages}
         />
       )}
+      <ContactSection locale={locale} profile={profile} className="mt-12" />
     </LandingContainer>
   )
 }

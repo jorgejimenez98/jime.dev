@@ -1,4 +1,4 @@
-import { JsonLd } from "@/components/content"
+import { ContactSection, JsonLd, SkillsList } from "@/components/content"
 import { LandingContainer } from "@/components/layouts"
 import type { AppLocale } from "@/i18n"
 import {
@@ -11,17 +11,19 @@ import { jsonLdGraph, personJsonLd, websiteJsonLd } from "@/lib/helpers"
 import {
   ExperiencePreview,
   HeroSection,
-  WebsitesPreview,
+  ProjectsPreview,
   WritingPreview
 } from "./components"
+import { getTranslations } from "next-intl/server"
 
 interface HomePageContentProps {
   locale: AppLocale
 }
 
 export async function HomePageContent({ locale }: HomePageContentProps) {
-  // Featured websites come first, so the four newest featured ones lead
-  const [profile, experiences, websites, posts] = await Promise.all([
+  // Apps sort before marketing sites, so Crealix and the other apps lead
+  const [t, profile, experiences, websites, posts] = await Promise.all([
+    getTranslations({ locale, namespace: "home" }),
     getProfile(locale),
     getExperiences(locale),
     getWebsites(locale, { limit: 4 }),
@@ -31,16 +33,28 @@ export async function HomePageContent({ locale }: HomePageContentProps) {
   return (
     <LandingContainer>
       <JsonLd
-        data={jsonLdGraph(websiteJsonLd(), personJsonLd(profile, experiences))}
+        data={jsonLdGraph(
+          websiteJsonLd(locale),
+          personJsonLd(profile, experiences)
+        )}
       />
       <HeroSection locale={locale} profile={profile} />
       {experiences.length > 0 && (
         <ExperiencePreview locale={locale} experiences={experiences} />
       )}
       {websites.length > 0 && (
-        <WebsitesPreview locale={locale} websites={websites} />
+        <ProjectsPreview locale={locale} websites={websites} />
+      )}
+      {profile.skills && profile.skills.length > 0 && (
+        <SkillsList
+          id="skills-title"
+          title={t("skills-title")}
+          skills={profile.skills}
+          className="mt-14"
+        />
       )}
       {posts.length > 0 && <WritingPreview locale={locale} posts={posts} />}
+      <ContactSection locale={locale} profile={profile} className="mt-14" />
     </LandingContainer>
   )
 }
