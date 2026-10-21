@@ -4,17 +4,27 @@ import { GraphQLClient, type Variables } from "graphql-request"
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
 
+/**
+ * Next's fetch cache lives in .next/cache and outlives builds (Vercel restores
+ * it on every deploy), so a deploy would keep serving old content. The readers'
+ * `use cache` already caches each response for the life of a build.
+ */
+export const uncachedFetch: typeof fetch = (input, init) =>
+  fetch(input, { ...init, cache: "no-store" })
+
 // "all": Contentful answers 200 with partial errors, and we decide below which
 // of them are acceptable instead of letting graphql-request throw on any.
 const deliveryClient = new GraphQLClient(endpoint, {
   headers: { Authorization: `Bearer ${env.CONTENTFUL_ACCESS_TOKEN}` },
-  errorPolicy: "all"
+  errorPolicy: "all",
+  fetch: uncachedFetch
 })
 
 const previewClient = env.CONTENTFUL_PREVIEW_API_TOKEN
   ? new GraphQLClient(endpoint, {
       headers: { Authorization: `Bearer ${env.CONTENTFUL_PREVIEW_API_TOKEN}` },
-      errorPolicy: "all"
+      errorPolicy: "all",
+      fetch: uncachedFetch
     })
   : null
 

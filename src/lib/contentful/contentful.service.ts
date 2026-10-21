@@ -1,6 +1,6 @@
 import "server-only"
 import type { AppLocale } from "@/i18n/routing"
-import { contentfulRequest } from "./client"
+import { contentfulRequest, uncachedFetch } from "./client"
 import { CONTENTFUL_LOCALES } from "./contentful.constants"
 import type {
   BlogPost,
@@ -155,7 +155,7 @@ export async function getAssetBytes(
   "use cache"
   cacheLife("max")
 
-  const response = await fetch(url)
+  const response = await uncachedFetch(url)
   if (!response.ok) {
     throw new Error(`Contentful: ${response.status} fetching ${url}`)
   }
