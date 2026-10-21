@@ -6,14 +6,10 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    remotePatterns: [
-      // Profile photo, until the CMS hosts it (see `UI.PROFILE.PHOTO`)
-      {
-        protocol: "https",
-        hostname: "static.crealix.ai",
-        pathname: "/static/**"
-      }
-    ]
+    // Contentful's Images API resizes at its CDN; non-Contentful images
+    // must be rendered with `unoptimized` (see the loader)
+    loader: "custom",
+    loaderFile: "./src/lib/contentful/image-loader.ts"
   },
   turbopack: {
     rules: {

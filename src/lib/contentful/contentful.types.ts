@@ -1,0 +1,84 @@
+import type { Document } from "@contentful/rich-text-types"
+
+export interface ContentfulImage {
+  url: string
+  width: number
+  height: number
+  title: string | null
+  description: string | null
+}
+
+export interface ContentfulFile {
+  url: string
+  fileName: string
+  contentType: string
+}
+
+export interface RichTextAsset extends ContentfulImage {
+  sys: { id: string }
+  contentType: string
+}
+
+export interface Profile {
+  sys: { publishedAt: string }
+  name: string
+  alternateName: string | null
+  headline: string
+  shortBio: string
+  bio: { json: Document } | null
+  avatar: ContentfulImage
+  resume: ContentfulFile | null
+  location: string | null
+  email: string | null
+  githubUrl: string | null
+  linkedinUrl: string | null
+  xUrl: string | null
+  // One group per item: "Group: skill, skill, skill"
+  skills: string[] | null
+  education: string | null
+  languages: string | null
+}
+
+export interface Experience {
+  sys: { id: string }
+  role: string
+  company: string
+  companyUrl: string | null
+  startDate: string
+  // Empty while it's the current role
+  endDate: string | null
+  summary: string | null
+  stack: string[] | null
+}
+
+export interface Website {
+  sys: { id: string; publishedAt: string }
+  name: string
+  url: string
+  description: string
+  year: number
+  client: string | null
+  featured: boolean | null
+  screenshot: ContentfulImage | null
+}
+
+export interface BlogPostSummary {
+  sys: { id: string; publishedAt: string }
+  title: string
+  slug: string
+  excerpt: string
+  publishDate: string
+  coverImage: ContentfulImage | null
+}
+
+export interface BlogPost extends BlogPostSummary {
+  body: {
+    json: Document
+    links: { assets: { block: (RichTextAsset | null)[] } }
+  }
+}
+
+export interface BlogPostSlug {
+  slug: string
+  sys: { publishedAt: string }
+}
