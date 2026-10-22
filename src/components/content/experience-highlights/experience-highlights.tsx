@@ -11,8 +11,8 @@ const FIGURE = /^([\d.,]+[+%]?)\s+(.+)$/
 
 /**
  * The size of a role at a glance, in one quiet panel: the notes, then the
- * figures, two by two on a phone and in one row, each only as wide as its own
- * text, from sm up.
+ * figures, two by two on a phone and spread across one row from sm up, each
+ * only as wide as its own text.
  */
 export function ExperienceHighlights({
   highlights,
@@ -36,7 +36,7 @@ export function ExperienceHighlights({
       {figures.length > 0 && (
         <dl
           className={cn(
-            "grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8",
+            "grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:justify-between",
             notes.length > 0 && "mt-3"
           )}
         >

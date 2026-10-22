@@ -67,7 +67,7 @@ export async function ExperiencePreview({
                 startDate={experience.startDate}
                 endDate={experience.endDate}
                 currentMonth={currentMonth}
-                precision="year"
+                variant="preview"
                 locale={locale}
                 presentLabel={tExperience("present")}
               />
