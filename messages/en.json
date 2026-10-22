@@ -27,7 +27,8 @@
   },
   "experience": {
     "present": "Now",
-    "new-tab": "opens in a new tab"
+    "new-tab": "opens in a new tab",
+    "stack": "Stack"
   },
   "about": {
     "title": "About",

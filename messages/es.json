@@ -27,7 +27,8 @@
   },
   "experience": {
     "present": "Actual",
-    "new-tab": "se abre en una pestaña nueva"
+    "new-tab": "se abre en una pestaña nueva",
+    "stack": "Tecnologías"
   },
   "about": {
     "title": "Sobre mí",

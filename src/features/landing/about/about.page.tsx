@@ -14,6 +14,10 @@ import {
 import { AboutIntro, BackgroundSection, ExperienceList } from "./components"
 import { getTranslations } from "next-intl/server"
 
+// Each section after the intro opens below a hairline, so the long page reads
+// in clear blocks
+const SECTION_CLASS_NAME = "mt-14 border-t border-border/50 pt-10"
+
 interface AboutPageContentProps {
   locale: AppLocale
 }
@@ -40,7 +44,11 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
       />
       <AboutIntro locale={locale} profile={profile} />
       {experiences.length > 0 && (
-        <ExperienceList locale={locale} experiences={experiences} />
+        <ExperienceList
+          locale={locale}
+          experiences={experiences}
+          className={SECTION_CLASS_NAME}
+        />
       )}
       {profile.skills && profile.skills.length > 0 && (
         <SkillsList
@@ -48,7 +56,7 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
           title={t("skills-title")}
           skills={profile.skills}
           note={t("skills-note")}
-          className="mt-12"
+          className={SECTION_CLASS_NAME}
         />
       )}
       {(profile.education || profile.languages) && (
@@ -56,9 +64,14 @@ export async function AboutPageContent({ locale }: AboutPageContentProps) {
           locale={locale}
           education={profile.education}
           languages={profile.languages}
+          className={SECTION_CLASS_NAME}
         />
       )}
-      <ContactSection locale={locale} profile={profile} className="mt-12" />
+      <ContactSection
+        locale={locale}
+        profile={profile}
+        className={SECTION_CLASS_NAME}
+      />
     </LandingContainer>
   )
 }

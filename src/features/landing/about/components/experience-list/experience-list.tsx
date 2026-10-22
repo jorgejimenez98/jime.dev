@@ -7,34 +7,42 @@ import { getTranslations } from "next-intl/server"
 interface ExperienceListProps {
   locale: AppLocale
   experiences: Experience[]
+  className?: string
 }
 
+// Every role, newest first, on one timeline
 export async function ExperienceList({
   locale,
-  experiences
+  experiences,
+  className
 }: ExperienceListProps) {
   const [t, tExperience, currentMonth] = await Promise.all([
     getTranslations({ locale, namespace: "about" }),
     getTranslations({ locale, namespace: "experience" }),
     getCurrentMonth()
   ])
+  const labels = {
+    present: tExperience("present"),
+    newTab: tExperience("new-tab"),
+    stack: tExperience("stack")
+  }
 
   return (
-    <section aria-labelledby="experience-title" className="mt-14">
+    <section aria-labelledby="experience-title" className={className}>
       <h2 id="experience-title" className="font-medium">
         {t("experience-title")}
       </h2>
-      <ul className="mt-2">
+      <ol className="mt-8">
         {experiences.map(experience => (
           <ExperienceItem
             key={experience.sys.id}
             experience={experience}
             locale={locale}
-            presentLabel={tExperience("present")}
             currentMonth={currentMonth}
+            labels={labels}
           />
         ))}
-      </ul>
+      </ol>
     </section>
   )
 }

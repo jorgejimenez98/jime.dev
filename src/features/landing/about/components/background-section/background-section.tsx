@@ -5,18 +5,20 @@ interface BackgroundSectionProps {
   locale: AppLocale
   education: string | null
   languages: string | null
+  className?: string
 }
 
 // Education and languages, one line each
 export async function BackgroundSection({
   locale,
   education,
-  languages
+  languages,
+  className
 }: BackgroundSectionProps) {
   const t = await getTranslations({ locale, namespace: "about" })
 
   return (
-    <section aria-labelledby="background-title" className="mt-12">
+    <section aria-labelledby="background-title" className={className}>
       <h2 id="background-title" className="font-medium">
         {t("background-title")}
       </h2>
