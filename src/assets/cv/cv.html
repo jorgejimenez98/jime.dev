@@ -24,60 +24,72 @@
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body {
     font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-    font-size: 9.8pt;
-    line-height: 1.48;
+    font-size: 10pt;
+    line-height: 1.42;
+    text-wrap: pretty;
     color: var(--body);
     background: #fff;
   }
   a { color: inherit; text-decoration: none; }
 
-  header { padding-bottom: 12pt; border-bottom: 1.5pt solid var(--ink); }
+  header { padding-bottom: 13pt; border-bottom: 1.5pt solid var(--ink); }
   h1 { font-size: 25pt; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1.05; }
   .headline { margin-top: 4pt; font-size: 11.5pt; font-weight: 500; color: var(--accent); }
-  .contact { margin-top: 7pt; font-size: 8.8pt; color: var(--muted); }
-  .contact.links { margin-top: 2pt; }
+  .contact { margin-top: 8pt; font-size: 9.2pt; color: var(--muted); }
+  .contact.links { margin-top: 3pt; }
   .contact span + span::before { content: "·"; margin: 0 6pt; color: #b5bcc4; }
   .contact a { color: var(--body); }
 
-  section { margin-top: 15pt; }
+  /* Three steps of space: between sections, between jobs, inside a job */
+  section { margin-top: 18pt; }
   h2 {
     font-size: 8.4pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink); padding-bottom: 4pt; margin-bottom: 8pt; border-bottom: 0.75pt solid var(--rule);
+    color: var(--ink); padding-bottom: 4pt; margin-bottom: 10pt; border-bottom: 0.75pt solid var(--rule);
   }
 
-  .summary { font-size: 10pt; color: var(--body); max-width: 92%; }
+  .summary { font-size: 10.2pt; line-height: 1.48; color: var(--body); max-width: 94%; }
   .summary strong { color: var(--ink); font-weight: 600; }
 
-  .stats { display: flex; margin-top: 10pt; border: 0.75pt solid var(--rule); border-radius: 5pt; }
+  .stats { display: flex; margin-top: 11pt; border: 0.75pt solid var(--rule); }
   .stat { flex: 1; padding: 7pt 10pt; }
   .stat + .stat { border-left: 0.75pt solid var(--rule); }
   .stat b { display: block; font-size: 13pt; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-  .stat small { display: block; font-size: 7.9pt; color: var(--muted); line-height: 1.3; }
+  .stat small { display: block; margin-top: 1pt; font-size: 8.4pt; color: var(--muted); line-height: 1.3; }
 
-  .job { margin-bottom: 14pt; }
+  /* A job stays on one page; one with several roles may break between them */
+  .job { break-inside: avoid; }
+  .job + .job { margin-top: 15pt; }
+  .job:has(.subs) { break-inside: auto; }
   .row, .meta, .lede { break-after: avoid; }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
-  .role { font-size: 10.4pt; font-weight: 600; color: var(--ink); }
+  .role { font-size: 10.6pt; font-weight: 600; color: var(--ink); }
   .role .co { color: var(--accent); }
-  .dates { font-size: 8.8pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .meta { font-size: 8.8pt; color: var(--muted); margin-top: 1pt; }
-  .lede { margin-top: 4pt; color: var(--body); }
-  .sub { margin-top: 9pt; }
-  ul { margin-top: 5pt; padding-left: 11pt; }
-  li { margin-bottom: 4pt; padding-left: 2pt; break-inside: avoid; }
+  .dates { font-size: 9pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .meta { font-size: 9pt; color: var(--muted); margin-top: 1pt; }
+  .lede { margin-top: 5pt; color: var(--body); }
+  .subs { margin-top: 9pt; margin-left: 1pt; padding-left: 11pt; border-left: 0.75pt solid var(--rule); }
+  .sub { break-inside: avoid; }
+  .sub + .sub { margin-top: 9pt; }
+  .sub .role { font-size: 10.2pt; }
+  ul { margin-top: 5pt; padding-left: 12pt; }
+  li { padding-left: 3pt; break-inside: avoid; }
+  li + li { margin-top: 4pt; }
   li::marker { color: var(--accent); }
   .job li strong { color: var(--ink); font-weight: 600; }
-  .stack { margin-top: 5pt; font-size: 8.6pt; color: var(--muted); }
+  .stack { margin-top: 6pt; font-size: 8.8pt; line-height: 1.42; color: var(--muted); }
   .stack b { font-weight: 600; color: var(--body); }
 
-  .skill { display: flex; gap: 10pt; margin-bottom: 5pt; break-inside: avoid; }
-  .skill dt { flex: 0 0 112pt; font-weight: 600; color: var(--ink); }
+  .skill { display: flex; gap: 12pt; break-inside: avoid; }
+  .skill + .skill { margin-top: 4pt; }
+  .skill dt { flex: 0 0 108pt; font-weight: 600; color: var(--ink); }
   .skill dd { flex: 1; }
 
   .two { display: flex; gap: 28pt; }
   .two > div { flex: 1; }
-  .plain p { margin-bottom: 2pt; }
-  .plain .muted { color: var(--muted); font-size: 8.8pt; }
+  /* The university's full name fits on one line */
+  .two > div:first-child { flex: 1.4; }
+  .plain p + p { margin-top: 2.5pt; }
+  .plain .muted { color: var(--muted); font-size: 9.2pt; }
 
   /*
    * Everything below is for the web view at jime.dev/cv. Print (and the PDF
@@ -143,7 +155,8 @@
     .stat:nth-child(odd) { border-left: 0; }
     .stat:nth-child(n+3) { border-top: 0.75pt solid var(--rule); }
     .row { flex-direction: column; align-items: flex-start; gap: 1pt; }
-    .skill { flex-direction: column; gap: 0; margin-bottom: 7pt; }
+    .skill { flex-direction: column; gap: 0; }
+    .skill + .skill { margin-top: 7pt; }
     .skill dt { flex: none; }
     .two { flex-direction: column; gap: 0; }
     .toolbar .label { display: none; }
@@ -237,26 +250,28 @@
       <div class="dates">Feb 2022 – Nov 2024</div>
     </div>
     <div class="meta">Madrid, Spain · Remote</div>
-    <div class="sub">
-      <div class="row">
-        <div class="role">Senior Frontend Engineer</div>
-        <div class="dates">Aug 2023 – Nov 2024</div>
+    <div class="subs">
+      <div class="sub">
+        <div class="row">
+          <div class="role">Senior Frontend Engineer</div>
+          <div class="dates">Aug 2023 – Nov 2024</div>
+        </div>
+        <ul>
+          <li>Built and improved interfaces for client products, including <strong>GLS</strong> (parcel delivery) and <strong>Fesbal</strong> (Spanish Federation of Food Banks), in Vue 3, Next.js and React.</li>
+          <li>Structured state and data access with Redux Toolkit and Pinia, with validated forms and Cypress tests.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Built and improved interfaces for client products, including <strong>GLS</strong> (parcel delivery) and <strong>Fesbal</strong> (Spanish Federation of Food Banks), in Vue 3, Next.js and React.</li>
-        <li>Structured state and data access with Redux Toolkit and Pinia, with validated forms and Cypress tests.</li>
-      </ul>
-    </div>
-    <div class="sub">
-      <div class="row">
-        <div class="role">Technical Team Leader</div>
-        <div class="dates">Apr 2022 – Aug 2023</div>
+      <div class="sub">
+        <div class="row">
+          <div class="role">Technical Team Leader</div>
+          <div class="dates">Apr 2022 – Aug 2023</div>
+        </div>
+        <ul>
+          <li><strong>Led an engineering team</strong> building web apps on Django REST Framework, NestJS, Next.js and Vue: scoping with stakeholders, planning and code review.</li>
+          <li>Built back-end services with Celery and Redis jobs, Solr search, Puppeteer automation and an Algorand blockchain integration, on Docker.</li>
+          <li>Set team standards for Git workflow, code review and automated testing (Pytest, Jest, end-to-end).</li>
+        </ul>
       </div>
-      <ul>
-        <li><strong>Led an engineering team</strong> building web apps on Django REST Framework, NestJS, Next.js and Vue: scoping with stakeholders, planning and code review.</li>
-        <li>Built back-end services with Celery and Redis jobs, Solr search, Puppeteer automation and an Algorand blockchain integration, on Docker.</li>
-        <li>Set team standards for Git workflow, code review and automated testing (Pytest, Jest, end-to-end).</li>
-      </ul>
     </div>
   </div>
 
