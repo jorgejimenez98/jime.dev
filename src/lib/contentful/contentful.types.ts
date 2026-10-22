@@ -49,6 +49,8 @@ export interface Experience {
   // Empty while it's the current role
   endDate: string | null
   summary: string | null
+  // What the role involved, one point per item
+  details: string[] | null
   stack: string[] | null
   // Short facts; the ones that start with a figure read as stats
   highlights: string[] | null

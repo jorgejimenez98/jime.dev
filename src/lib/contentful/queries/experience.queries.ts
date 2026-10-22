@@ -19,6 +19,7 @@ export const EXPERIENCES_QUERY = gql`
         startDate
         endDate
         summary
+        details
         stack
         highlights
       }

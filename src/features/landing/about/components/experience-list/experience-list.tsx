@@ -1,5 +1,6 @@
 import type { AppLocale } from "@/i18n"
 import type { Experience } from "@/lib/contentful"
+import { getCurrentMonth } from "@/lib/helpers"
 import { ExperienceItem } from "./experience-item"
 import { getTranslations } from "next-intl/server"
 
@@ -12,9 +13,10 @@ export async function ExperienceList({
   locale,
   experiences
 }: ExperienceListProps) {
-  const [t, tExperience] = await Promise.all([
+  const [t, tExperience, currentMonth] = await Promise.all([
     getTranslations({ locale, namespace: "about" }),
-    getTranslations({ locale, namespace: "experience" })
+    getTranslations({ locale, namespace: "experience" }),
+    getCurrentMonth()
   ])
 
   return (
@@ -29,6 +31,7 @@ export async function ExperienceList({
             experience={experience}
             locale={locale}
             presentLabel={tExperience("present")}
+            currentMonth={currentMonth}
           />
         ))}
       </ul>

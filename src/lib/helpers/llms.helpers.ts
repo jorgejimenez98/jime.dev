@@ -7,7 +7,7 @@ import type {
   Profile,
   Website
 } from "@/lib/contentful/contentful.types"
-import { formatMonthYear } from "./dates.helpers"
+import { countMonths, formatDuration, formatMonthYear } from "./dates.helpers"
 import { localizedUrl, SITE_NAMES, SITE_URL } from "./seo.helpers"
 
 interface LlmsTxtOptions {
@@ -15,6 +15,8 @@ interface LlmsTxtOptions {
   experiences: Experience[]
   websites: Website[]
   posts: BlogPostSummary[]
+  // The first of this month, which a current role counts up to
+  currentMonth: string
 }
 
 const LOCALE = routing.defaultLocale
@@ -23,12 +25,17 @@ function link(name: string, url: string, note?: string | null) {
   return `- [${name}](${url})${note ? `: ${note}` : ""}`
 }
 
-function dateRange(experience: Experience) {
+// "Nov 2024 – present (2 years)"
+function dateRange(experience: Experience, currentMonth: string) {
   const start = formatMonthYear(experience.startDate, LOCALE)
   const end = experience.endDate
     ? formatMonthYear(experience.endDate, LOCALE)
     : "present"
-  return `${start} – ${end}`
+  const months = countMonths(
+    experience.startDate,
+    experience.endDate ?? currentMonth
+  )
+  return `${start} – ${end} (${formatDuration(Math.max(1, months), LOCALE)})`
 }
 
 /**
@@ -39,7 +46,8 @@ export function renderLlmsTxt({
   profile,
   experiences,
   websites,
-  posts
+  posts,
+  currentMonth
 }: LlmsTxtOptions) {
   const otherNames = [SITE_NAMES.es, profile.alternateName].filter(
     (name): name is string => !!name && name !== profile.name
@@ -94,15 +102,20 @@ export function renderLlmsTxt({
     "",
     "## Experience",
     "",
-    ...experiences.map(experience =>
+    // Each role, then what it involved as nested points
+    ...experiences.flatMap(experience => [
       link(
         experience.company,
         experience.companyUrl ?? localizedUrl(UI.ROUTES.ABOUT, LOCALE),
-        [`${experience.role}, ${dateRange(experience)}`, experience.summary]
+        [
+          `${experience.role}, ${dateRange(experience, currentMonth)}`,
+          experience.summary
+        ]
           .filter(Boolean)
           .join(". ")
-      )
-    ),
+      ),
+      ...(experience.details ?? []).map(detail => `  - ${detail}`)
+    ]),
     ""
   )
 
