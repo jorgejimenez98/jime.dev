@@ -1,8 +1,8 @@
-import { ExperienceHighlights } from "@/components/content"
+import { ExperienceDates, ExperienceHighlights } from "@/components/content"
 import type { AppLocale } from "@/i18n"
 import { UI } from "@/lib/constants/ui.constants"
 import type { Experience } from "@/lib/contentful"
-import { getYear } from "@/lib/helpers"
+import { getCurrentMonth } from "@/lib/helpers"
 import { ArrowUpRightIcon } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 import { SectionHeader } from "../section-header/section-header"
@@ -14,15 +14,16 @@ interface ExperiencePreviewProps {
   experiences: Experience[]
 }
 
-// Role · company with the years on the right. A role with highlights (Crealix)
-// shows them underneath; the rest of the detail lives on About.
+// Role · company with the years and how long on the right. A role with
+// highlights (Crealix) shows them underneath; the rest lives on About.
 export async function ExperiencePreview({
   locale,
   experiences
 }: ExperiencePreviewProps) {
-  const [t, tExperience] = await Promise.all([
+  const [t, tExperience, currentMonth] = await Promise.all([
     getTranslations({ locale, namespace: "home" }),
-    getTranslations({ locale, namespace: "experience" })
+    getTranslations({ locale, namespace: "experience" }),
+    getCurrentMonth()
   ])
 
   return (
@@ -62,12 +63,14 @@ export async function ExperiencePreview({
                   )}
                 </span>
               </span>
-              <span className="shrink-0 text-sm whitespace-nowrap text-muted-foreground tabular-nums">
-                {getYear(experience.startDate)} —{" "}
-                {experience.endDate
-                  ? getYear(experience.endDate)
-                  : tExperience("present")}
-              </span>
+              <ExperienceDates
+                startDate={experience.startDate}
+                endDate={experience.endDate}
+                currentMonth={currentMonth}
+                precision="year"
+                locale={locale}
+                presentLabel={tExperience("present")}
+              />
             </div>
             {experience.highlights && experience.highlights.length > 0 && (
               <ExperienceHighlights

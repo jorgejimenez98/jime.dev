@@ -2,6 +2,7 @@
 // ../common, so a Client Component importing that barrel never pulls these in.
 export { ContactSection } from "./contact-section/contact-section"
 export { CvButton } from "./cv-button/cv-button"
+export { ExperienceDates } from "./experience-dates/experience-dates"
 export { ExperienceHighlights } from "./experience-highlights/experience-highlights"
 export { JsonLd } from "./json-ld/json-ld"
 export { PageHeader } from "./page-header/page-header"

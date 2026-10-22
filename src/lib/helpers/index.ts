@@ -1,6 +1,9 @@
 export {
+  countMonths,
+  formatDuration,
   formatLongDate,
   formatMonthYear,
+  getCurrentMonth,
   getCurrentYear,
   getYear
 } from "./dates.helpers"
