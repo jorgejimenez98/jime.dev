@@ -9,6 +9,7 @@ import { z } from "zod"
 const runtimeEnv = {
   NEXT_PUBLIC_FRONTEND_URL: process.env.NEXT_PUBLIC_FRONTEND_URL,
   NEXT_PUBLIC_CONTENTFUL_SPACE_ID: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
 
   // Contentful
   CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -34,7 +35,9 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_FRONTEND_URL: z.url(),
-    NEXT_PUBLIC_CONTENTFUL_SPACE_ID: z.string().min(1)
+    NEXT_PUBLIC_CONTENTFUL_SPACE_ID: z.string().min(1),
+    // Google Analytics 4. Unset (local, previews) means no tag and no data
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().regex(/^G-[A-Z0-9]+$/).optional()
   },
 
   runtimeEnv,

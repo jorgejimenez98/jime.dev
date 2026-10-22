@@ -3,8 +3,10 @@ import { DotGridBackground, ScrollToTop } from "@/components/common"
 import { LandingFooter, LandingHeader } from "@/components/layouts"
 import { ThemeProvider } from "@/components/providers"
 import { pickClientMessages, routing } from "@/i18n"
+import { env } from "@/lib/constants/env.constants"
 import { getPostSlugs } from "@/lib/contentful"
 import { baseOpenGraph, SITE_NAMES, SITE_URL } from "@/lib/helpers"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Geist } from "next/font/google"
 import { notFound } from "next/navigation"
@@ -103,6 +105,10 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
         <Analytics />
       </body>
+      {/* gtag.js loads after hydration and records each page change */}
+      {env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   )
 }
