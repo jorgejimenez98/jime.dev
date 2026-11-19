@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils"
 
 interface ExperienceHighlightsProps {
-  // "1,800+ users" reads as a figure; anything else ("Launched in May 2026…") as a note
+  // "10,000+ users" reads as a figure; anything else ("Launched in May 2026…") as a note
   highlights: string[]
   className?: string
 }
 
-// A leading figure (1,800+ / 99.4% / 60+) followed by what it counts
-const FIGURE = /^([\d.,]+[+%]?)\s+(.+)$/
+// A leading figure (10,000+ / 99.4% / $2K+) followed by what it counts
+const FIGURE = /^(\$?[\d.,]+[KM]?[+%]?)\s+(.+)$/
 
 /**
  * The size of a role at a glance, in one quiet panel: the notes, then the

@@ -32,7 +32,7 @@ Each page sets canonical and hreflang links, Open Graph data and JSON-LD (Person
 Content lives in Contentful with `en` and `es` locales:
 
 - **profile**: name, headline, bio, avatar, CV PDF, links and skills
-- **experience**: role, company, dates, summary, details, highlights and stack. A highlight that starts with a figure ("1,800+ users") is shown as a stat
+- **experience**: role, company, dates, summary, details, highlights and stack. A highlight that starts with a figure ("10,000+ users") is shown as a stat
 - **website**: a project, marked `app` or `marketing`. "Show on home" picks the ones on the home page
 - **blogPost**: localized title, excerpt and rich-text body, with one shared slug
 
